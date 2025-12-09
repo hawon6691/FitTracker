@@ -24,10 +24,17 @@ public class SecurityConfig {
             .sessionManagement(session -> 
                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/health", "/api/auth/**").permitAll()
+                .requestMatchers(
+                    "/health",
+                    "/api/auth/**",
+                    "/swagger-ui.html",
+                    "/swagger-ui/**",
+                    "/v3/api-docs/**",
+                    "/api-docs/**",
+                    "/api/routines/**"
+                ).permitAll()
                 .anyRequest().authenticated()
             );
-        
         return http.build();
     }
     
