@@ -12,7 +12,7 @@ import io.swagger.v3.oas.models.security.SecurityScheme;
 
 @Configuration
 public class SwaggerConfig {
-    
+
     @Bean
     public OpenAPI openAPI() {
         return new OpenAPI()
@@ -21,8 +21,8 @@ public class SwaggerConfig {
                         .description("운동 루틴 트래커 REST API 문서")
                         .version("v1.0.0")
                         .contact(new Contact()
-                                .name("Your Name")
-                                .email("your.email@example.com")))
+                                .name("Your Name") // ❌ 실제 이름으로 변경
+                                .email("your.email@example.com"))) // ❌ 실제 이메일
                 .addSecurityItem(new SecurityRequirement().addList("Bearer Authentication"))
                 .components(new Components()
                         .addSecuritySchemes("Bearer Authentication",
