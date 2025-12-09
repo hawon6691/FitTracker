@@ -21,8 +21,10 @@ public class ExerciseTypeController {
      private final ExerciseTypeService exerciseTypeService;
     
     @GetMapping
+    @Operation(summary = "운동 종목 전체 조회", description = "모든 운동 종목 또는 신체 부위별 조회")  // 추가
     public ResponseEntity<ApiResponse<List<ExerciseTypeResponse>>> getAllExercises(
-            @RequestParam(required = false) String bodyPart) {
+        @Parameter(description = "신체 부위 (가슴, 등, 다리, 어깨, 팔, 복근)")  // 추가
+        @RequestParam(required = false) String bodyPart) {
         List<ExerciseTypeResponse> exercises;
         
         if (bodyPart != null && !bodyPart.isEmpty()) {
@@ -38,13 +40,5 @@ public class ExerciseTypeController {
     public ResponseEntity<ApiResponse<ExerciseTypeResponse>> getExerciseById(@PathVariable Long id) {
         ExerciseTypeResponse exercise = exerciseTypeService.getExerciseById(id);
         return ResponseEntity.ok(ApiResponse.success(exercise));
-    }
-
-    @GetMapping
-    @Operation(summary = "운동 종목 전체 조회", description = "모든 운동 종목 또는 신체 부위별 조회")  // 추가
-    public ResponseEntity<ApiResponse<List<ExerciseTypeResponse>>> getAllExercises(
-            @Parameter(description = "신체 부위 (가슴, 등, 다리, 어깨, 팔, 복근)")  // 추가
-            @RequestParam(required = false) String bodyPart) {
-        // ...
     }
 }

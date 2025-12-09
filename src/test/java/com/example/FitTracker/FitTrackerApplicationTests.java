@@ -1,9 +1,11 @@
-package com.example.FitTracker.service;
+package com.example.FitTracker;
 
 import com.example.FitTracker.dto.request.auth.SignupRequest;
 import com.example.FitTracker.dto.response.auth.AuthResponse;
 import com.example.FitTracker.exception.DuplicateEmailException;
 import com.example.FitTracker.repository.UserRepository;
+import com.example.FitTracker.service.UserService;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
