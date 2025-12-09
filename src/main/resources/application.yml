@@ -24,15 +24,17 @@ jwt:
 
 springdoc:
   api-docs:
-    enabled: true              # 추가
-    path: /v3/api-docs         # 변경
+    enabled: true
+    path: /v3/api-docs
   swagger-ui:
-    enabled: true              # 추가
+    enabled: true
     path: /swagger-ui.html
     operations-sorter: method
     tags-sorter: alpha
+    disable-swagger-default-url: true
   default-consumes-media-type: application/json
   default-produces-media-type: application/json
+  show-actuator: false
 
 logging:
   level:
