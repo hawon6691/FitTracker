@@ -20,15 +20,17 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .formLogin(AbstractHttpConfigurer::disable)
-                // .anonymous(AbstractHttpConfigurer::disable) // 이 줄 제거!
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/api/auth/**",
-                                "/swagger-ui.html",
                                 "/swagger-ui/**",
+                                "/swagger-ui.html",
                                 "/v3/api-docs/**",
+                                "/v3/api-docs", // 추가
                                 "/api-docs/**",
+                                "/swagger-resources/**", // 추가
+                                "/webjars/**", // 추가
                                 "/api/**" // 개발 중에는 전체 허용
                         ).permitAll()
                         .anyRequest().authenticated());

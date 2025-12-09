@@ -24,8 +24,10 @@ jwt:
 
 springdoc:
   api-docs:
-    path: /api-docs
+    enabled: true              # 추가
+    path: /v3/api-docs         # 변경
   swagger-ui:
+    enabled: true              # 추가
     path: /swagger-ui.html
     operations-sorter: method
     tags-sorter: alpha
