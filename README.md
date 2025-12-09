@@ -36,25 +36,3 @@ src/main/java/com/example/FitTracker/
 ├── service/         # 비즈니스 로직
 └── exception/       # 예외 처리
 ```
-```
-
----
-
-### 4. **.gitignore 추가 항목**
-```
-# 현재 .gitignore에 추가 필요
-### 민감 정보 ###
-application-local.yml
-application-secret.yml
-**/application-local.yml
-
-### 데이터베이스 ###
-*.db
-*.sqlite
-
-### 로그 파일 ###
-logs/
-*.log
-
-### MacOS ###
-.DS_Store
