@@ -21,11 +21,21 @@ public interface WorkoutSetRepository extends JpaRepository<WorkoutSet, Long> {
         Long exerciseTypeId
     );
     
+    // 모든 운동 종목의 기록 조회 (개인 기록 추적용)
+    @Query("SELECT ws FROM WorkoutSet ws " +
+           "JOIN FETCH ws.workoutSession session " +
+           "JOIN FETCH ws.exerciseType et " +
+           "WHERE session.user.id = :userId " +
+           "AND ws.weight IS NOT NULL " +
+           "ORDER BY ws.weight DESC, ws.reps DESC")
+    List<WorkoutSet> findAllPersonalRecords(@Param("userId") Long userId);
+    
     // 특정 운동 종목의 최근 기록 조회 (개인 기록 추적용)
     @Query("SELECT ws FROM WorkoutSet ws " +
-           "JOIN ws.workoutSession session " +
+           "JOIN FETCH ws.workoutSession session " +
            "WHERE session.user.id = :userId " +
            "AND ws.exerciseType.id = :exerciseTypeId " +
+           "AND ws.weight IS NOT NULL " +
            "ORDER BY ws.weight DESC, ws.reps DESC")
     List<WorkoutSet> findPersonalRecords(@Param("userId") Long userId, 
                                         @Param("exerciseTypeId") Long exerciseTypeId);
