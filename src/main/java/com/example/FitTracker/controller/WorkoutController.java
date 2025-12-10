@@ -4,6 +4,7 @@ import com.example.FitTracker.dto.request.workout.AddWorkoutSetRequest;
 import com.example.FitTracker.dto.request.workout.CreateWorkoutSessionRequest;
 import com.example.FitTracker.dto.response.ApiResponse;
 import com.example.FitTracker.dto.response.workout.WorkoutSessionResponse;
+import com.example.FitTracker.security.SecurityUtil;
 import com.example.FitTracker.service.WorkoutService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -25,17 +26,13 @@ import java.util.List;
 public class WorkoutController {
     
     private final WorkoutService workoutService;
-    
-    // 임시로 userId=1 고정 (JWT 구현 후 토큰에서 추출)
-    private Long getCurrentUserId() {
-        return 1L;
-    }
+    private final SecurityUtil securityUtil;
     
     @PostMapping
     @Operation(summary = "운동 세션 생성", description = "새로운 운동 세션을 시작합니다")
     public ResponseEntity<ApiResponse<WorkoutSessionResponse>> createWorkoutSession(
             @Valid @RequestBody CreateWorkoutSessionRequest request) {
-        WorkoutSessionResponse response = workoutService.createWorkoutSession(getCurrentUserId(), request);
+        WorkoutSessionResponse response = workoutService.createWorkoutSession(securityUtil.getCurrentUserId(), request);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(ApiResponse.success("운동 세션 생성 완료", response));
@@ -46,7 +43,7 @@ public class WorkoutController {
     public ResponseEntity<ApiResponse<WorkoutSessionResponse>> addWorkoutSet(
             @PathVariable Long sessionId,
             @Valid @RequestBody AddWorkoutSetRequest request) {
-        WorkoutSessionResponse response = workoutService.addWorkoutSet(getCurrentUserId(), sessionId, request);
+        WorkoutSessionResponse response = workoutService.addWorkoutSet(securityUtil.getCurrentUserId(), sessionId, request);
         return ResponseEntity.ok(ApiResponse.success("세트 추가 완료", response));
     }
     
@@ -59,9 +56,9 @@ public class WorkoutController {
         List<WorkoutSessionResponse> workouts;
         
         if (startDate != null && endDate != null) {
-            workouts = workoutService.getWorkoutsByDateRange(getCurrentUserId(), startDate, endDate);
+            workouts = workoutService.getWorkoutsByDateRange(securityUtil.getCurrentUserId(), startDate, endDate);
         } else {
-            workouts = workoutService.getUserWorkouts(getCurrentUserId());
+            workouts = workoutService.getUserWorkouts(securityUtil.getCurrentUserId());
         }
         
         return ResponseEntity.ok(ApiResponse.success(workouts));
@@ -70,14 +67,14 @@ public class WorkoutController {
     @GetMapping("/{sessionId}")
     @Operation(summary = "운동 세션 상세 조회", description = "특정 운동 세션의 상세 정보를 조회합니다")
     public ResponseEntity<ApiResponse<WorkoutSessionResponse>> getWorkoutSession(@PathVariable Long sessionId) {
-        WorkoutSessionResponse session = workoutService.getWorkoutSession(getCurrentUserId(), sessionId);
+        WorkoutSessionResponse session = workoutService.getWorkoutSession(securityUtil.getCurrentUserId(), sessionId);
         return ResponseEntity.ok(ApiResponse.success(session));
     }
     
     @DeleteMapping("/{sessionId}")
     @Operation(summary = "운동 세션 삭제", description = "운동 세션을 삭제합니다")
     public ResponseEntity<ApiResponse<Void>> deleteWorkoutSession(@PathVariable Long sessionId) {
-        workoutService.deleteWorkoutSession(getCurrentUserId(), sessionId);
+        workoutService.deleteWorkoutSession(securityUtil.getCurrentUserId(), sessionId);
         return ResponseEntity.ok(ApiResponse.success("운동 세션 삭제 완료", null));
     }
 }

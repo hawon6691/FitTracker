@@ -26,11 +26,10 @@ public class CustomUserDetailsService implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(
                 user.getEmail(),
                 user.getPassword(),
-                new ArrayList<>()  // 권한 목록 (현재는 빈 리스트)
+                new ArrayList<>()
         );
     }
     
-    // 추가: User ID로 UserDetails 로드 (선택사항)
     @Transactional(readOnly = true)
     public UserDetails loadUserById(Long id) {
         User user = userRepository.findById(id)
