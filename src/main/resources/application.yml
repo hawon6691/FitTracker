@@ -19,7 +19,7 @@ server:
 
 # JWT 설정
 jwt:
-  secret: your-secret-key-min-256-bits-long-for-hs256-algorithm-security  # 배포 시 환경변수로 관리
+  secret: dGhpcy1pcy1hLXZlcnktc2VjdXJlLWFuZC1sb25nLWtleS1mb3ItaHMyNTYtYWxnb3JpdGht  # Base64 인코딩된 시크릿
   expiration: 86400000  # 24시간 (밀리초)
 
 springdoc:
