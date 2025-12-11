@@ -4,6 +4,7 @@ import com.example.FitTracker.domain.*;
 import com.example.FitTracker.dto.request.workout.AddWorkoutSetRequest;
 import com.example.FitTracker.dto.request.workout.CreateWorkoutSessionRequest;
 import com.example.FitTracker.dto.response.workout.WorkoutSessionResponse;
+import com.example.FitTracker.exception.ResourceNotFoundException;
 import com.example.FitTracker.repository.RoutineRepository;
 import com.example.FitTracker.repository.WorkoutSessionRepository;
 import lombok.RequiredArgsConstructor;
@@ -91,4 +92,28 @@ public class WorkoutService {
                 .orElseThrow(() -> new IllegalArgumentException("운동 세션을 찾을 수 없습니다: " + sessionId));
         workoutSessionRepository.delete(session);
     }
+
+    @Transactional
+public WorkoutSessionResponse updateWorkoutSet(Long userId, Long sessionId, 
+                                                Long setId, AddWorkoutSetRequest request) {
+    WorkoutSession session = workoutSessionRepository.findByIdAndUserId(sessionId, userId)
+            .orElseThrow(() -> new ResourceNotFoundException("운동 세션", "id", sessionId));
+    
+    WorkoutSet workoutSet = session.getWorkoutSets().stream()
+            .filter(set -> set.getId().equals(setId))
+            .findFirst()
+            .orElseThrow(() -> new ResourceNotFoundException("운동 세트", "id", setId));
+    
+    workoutSet.updateSet(request.getReps(), request.getWeight(), request.getCompleted());
+    
+    return WorkoutSessionResponse.from(session);
+}
+
+@Transactional
+public void deleteWorkoutSet(Long userId, Long sessionId, Long setId) {
+    WorkoutSession session = workoutSessionRepository.findByIdAndUserId(sessionId, userId)
+            .orElseThrow(() -> new ResourceNotFoundException("운동 세션", "id", sessionId));
+    
+    session.getWorkoutSets().removeIf(set -> set.getId().equals(setId));
+}
 }

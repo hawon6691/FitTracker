@@ -6,7 +6,9 @@ import lombok.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "workout_sets")
+@Table(name = "workout_sets", indexes = {
+    @Index(name = "idx_session_exercise", columnList = "workout_session_id, exercise_type_id")
+})
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor

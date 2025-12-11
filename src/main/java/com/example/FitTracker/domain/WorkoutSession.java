@@ -12,7 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "workout_sessions")
+@Table(name = "workout_sessions", indexes = {
+    @Index(name = "idx_user_date", columnList = "user_id, workout_date"),
+    @Index(name = "idx_workout_date", columnList = "workout_date")
+})
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor

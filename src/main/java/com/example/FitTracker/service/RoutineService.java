@@ -8,6 +8,7 @@ import com.example.FitTracker.dto.request.routine.CreateRoutineRequest;
 import com.example.FitTracker.dto.request.routine.RoutineExerciseRequest;
 import com.example.FitTracker.dto.request.routine.UpdateRoutineRequest;
 import com.example.FitTracker.dto.response.routine.RoutineResponse;
+import com.example.FitTracker.exception.ResourceNotFoundException;
 import com.example.FitTracker.repository.RoutineRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,27 +21,27 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class RoutineService {
-    
+
     private final RoutineRepository routineRepository;
     private final UserService userService;
     private final ExerciseTypeService exerciseTypeService;
-    
+
     @Transactional
     public RoutineResponse createRoutine(Long userId, CreateRoutineRequest request) {
         User user = userService.findById(userId);
-        
+
         // 루틴 생성
         Routine routine = Routine.builder()
                 .user(user)
                 .name(request.getName())
                 .description(request.getDescription())
                 .build();
-        
+
         // 운동 종목 추가
         int orderIndex = 0;
         for (RoutineExerciseRequest exerciseRequest : request.getExercises()) {
             ExerciseType exerciseType = exerciseTypeService.findById(exerciseRequest.getExerciseTypeId());
-            
+
             RoutineExercise routineExercise = RoutineExercise.builder()
                     .routine(routine)
                     .exerciseType(exerciseType)
@@ -49,43 +50,43 @@ public class RoutineService {
                     .targetWeight(exerciseRequest.getTargetWeight())
                     .orderIndex(orderIndex++)
                     .build();
-            
+
             routine.getRoutineExercises().add(routineExercise);
         }
-        
+
         Routine savedRoutine = routineRepository.save(routine);
         return RoutineResponse.from(savedRoutine);
     }
-    
+
     public List<RoutineResponse> getUserRoutines(Long userId) {
         return routineRepository.findByUserId(userId).stream()
                 .map(RoutineResponse::from)
                 .collect(Collectors.toList());
     }
-    
+
     public RoutineResponse getRoutineById(Long userId, Long routineId) {
         Routine routine = routineRepository.findByIdAndUserId(routineId, userId)
                 .orElseThrow(() -> new IllegalArgumentException("루틴을 찾을 수 없습니다: " + routineId));
         return RoutineResponse.from(routine);
     }
-    
+
     @Transactional
     public RoutineResponse updateRoutine(Long userId, Long routineId, UpdateRoutineRequest request) {
         Routine routine = routineRepository.findByIdAndUserId(routineId, userId)
                 .orElseThrow(() -> new IllegalArgumentException("루틴을 찾을 수 없습니다: " + routineId));
-        
+
         // 루틴 정보 수정
         routine.updateInfo(request.getName(), request.getDescription());
-        
+
         // 기존 운동 종목 삭제
         routine.getRoutineExercises().clear();
-        
+
         // 새로운 운동 종목 추가
         if (request.getExercises() != null) {
             int orderIndex = 0;
             for (RoutineExerciseRequest exerciseRequest : request.getExercises()) {
                 ExerciseType exerciseType = exerciseTypeService.findById(exerciseRequest.getExerciseTypeId());
-                
+
                 RoutineExercise routineExercise = RoutineExercise.builder()
                         .routine(routine)
                         .exerciseType(exerciseType)
@@ -94,18 +95,50 @@ public class RoutineService {
                         .targetWeight(exerciseRequest.getTargetWeight())
                         .orderIndex(orderIndex++)
                         .build();
-                
+
                 routine.getRoutineExercises().add(routineExercise);
             }
         }
-        
+
         return RoutineResponse.from(routine);
     }
-    
+
     @Transactional
     public void deleteRoutine(Long userId, Long routineId) {
         Routine routine = routineRepository.findByIdAndUserId(routineId, userId)
                 .orElseThrow(() -> new IllegalArgumentException("루틴을 찾을 수 없습니다: " + routineId));
         routineRepository.delete(routine);
+    }
+
+    @Transactional
+    public RoutineResponse copyRoutine(Long userId, Long routineId, String newName) {
+        Routine originalRoutine = routineRepository.findByIdAndUserId(routineId, userId)
+                .orElseThrow(() -> new ResourceNotFoundException("루틴", "id", routineId));
+
+        User user = userService.findById(userId);
+
+        String copiedName = newName != null ? newName : originalRoutine.getName() + " (복사본)";
+
+        Routine copiedRoutine = Routine.builder()
+                .user(user)
+                .name(copiedName)
+                .description(originalRoutine.getDescription())
+                .build();
+
+        // 운동 종목 복사
+        for (RoutineExercise original : originalRoutine.getRoutineExercises()) {
+            RoutineExercise copied = RoutineExercise.builder()
+                    .routine(copiedRoutine)
+                    .exerciseType(original.getExerciseType())
+                    .targetSets(original.getTargetSets())
+                    .targetReps(original.getTargetReps())
+                    .targetWeight(original.getTargetWeight())
+                    .orderIndex(original.getOrderIndex())
+                    .build();
+            copiedRoutine.getRoutineExercises().add(copied);
+        }
+
+        Routine savedRoutine = routineRepository.save(copiedRoutine);
+        return RoutineResponse.from(savedRoutine);
     }
 }

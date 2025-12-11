@@ -65,4 +65,16 @@ public class RoutineController {
         routineService.deleteRoutine(securityUtil.getCurrentUserId(), id);
         return ResponseEntity.ok(ApiResponse.success("루틴 삭제 완료", null));
     }
+
+    // RoutineController에 추가
+    @PostMapping("/{id}/copy")
+    @Operation(summary = "루틴 복사", description = "기존 루틴을 복사하여 새 루틴을 생성합니다")
+    public ResponseEntity<ApiResponse<RoutineResponse>> copyRoutine(
+            @PathVariable Long id,
+            @RequestParam(required = false) String newName) {
+        RoutineResponse response = routineService.copyRoutine(
+                securityUtil.getCurrentUserId(), id, newName);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(ApiResponse.success("루틴 복사 완료", response));
+    }
 }
