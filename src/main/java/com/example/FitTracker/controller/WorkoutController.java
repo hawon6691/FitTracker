@@ -13,7 +13,10 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -82,22 +85,23 @@ public class WorkoutController {
         return ResponseEntity.ok(ApiResponse.success("운동 세션 삭제 완료", null));
     }
 
-    @GetMapping("/paged")
-    @Operation(summary = "운동 기록 페이징 조회")
-    public ResponseEntity<ApiResponse<PageResponse<WorkoutSessionResponse>>> getWorkoutsPaged(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "20") int size,
-            @RequestParam(defaultValue = "workoutDate") String sortBy,
-            @RequestParam(defaultValue = "DESC") String direction) {
-
-        Sort.Direction sortDirection = Sort.Direction.fromString(direction);
-        Pageable pageable = PageRequest.of(page, size, Sort.by(sortDirection, sortBy));
-
-        Page<WorkoutSessionResponse> workouts = workoutService.getUserWorkoutsPaged(
-                securityUtil.getCurrentUserId(), pageable);
-
-        return ResponseEntity.ok(ApiResponse.success(PageResponse.of(workouts)));
-    }
+    // TODO: 페이징 기능은 향후 구현 예정
+    // @GetMapping("/paged")
+    // @Operation(summary = "운동 기록 페이징 조회")
+    // public ResponseEntity<ApiResponse<PageResponse<WorkoutSessionResponse>>> getWorkoutsPaged(
+    //         @RequestParam(defaultValue = "0") int page,
+    //         @RequestParam(defaultValue = "20") int size,
+    //         @RequestParam(defaultValue = "workoutDate") String sortBy,
+    //         @RequestParam(defaultValue = "DESC") String direction) {
+    //
+    //     Sort.Direction sortDirection = Sort.Direction.fromString(direction);
+    //     Pageable pageable = PageRequest.of(page, size, Sort.by(sortDirection, sortBy));
+    //
+    //     Page<WorkoutSessionResponse> workouts = workoutService.getUserWorkoutsPaged(
+    //             securityUtil.getCurrentUserId(), pageable);
+    //
+    //     return ResponseEntity.ok(ApiResponse.success(PageResponse.of(workouts)));
+    // }
 
     @PutMapping("/{sessionId}/sets/{setId}")
     @Operation(summary = "세트 수정", description = "운동 세트 정보를 수정합니다")

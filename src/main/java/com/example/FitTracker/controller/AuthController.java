@@ -48,7 +48,6 @@ public class AuthController {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "409", description = "이메일 중복", content = @Content(examples = @ExampleObject(value = "{\"success\":false,\"message\":\"이미 사용 중인 이메일입니다: test@test.com\"}"))),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "입력값 검증 실패")
     })
-    @Operation(summary = "회원가입", description = "새로운 사용자를 등록합니다")
     public ResponseEntity<ApiResponse<AuthResponse>> signup(@Valid @RequestBody SignupRequest request) {
         AuthResponse response = userService.signup(request);
         return ResponseEntity

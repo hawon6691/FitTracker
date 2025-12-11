@@ -33,6 +33,14 @@ public interface WorkoutSessionRepository extends JpaRepository<WorkoutSession, 
                      "ORDER BY ws.workoutDate DESC")
        List<WorkoutSession> findAllByUserIdWithSets(@Param("userId") Long userId);
 
+       // 특정 세션과 세트 정보 함께 조회
+       @Query("SELECT ws FROM WorkoutSession ws " +
+                     "LEFT JOIN FETCH ws.workoutSets wset " +
+                     "LEFT JOIN FETCH wset.exerciseType " +
+                     "WHERE ws.id = :sessionId AND ws.user.id = :userId")
+       Optional<WorkoutSession> findByIdWithSets(@Param("sessionId") Long sessionId,
+                                                 @Param("userId") Long userId);
+
        // 주간 운동 횟수 조회
        @Query("SELECT COUNT(ws) FROM WorkoutSession ws " +
                      "WHERE ws.user.id = :userId " +

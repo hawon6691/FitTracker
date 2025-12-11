@@ -50,15 +50,3 @@ public class Goal {
         }
     }
 }
-
-enum GoalType {
-    WEIGHT,      // 무게 목표
-    REPS,        // 횟수 목표
-    FREQUENCY    // 운동 빈도 목표
-}
-
-enum GoalStatus {
-    IN_PROGRESS,
-    COMPLETED,
-    FAILED
-}
