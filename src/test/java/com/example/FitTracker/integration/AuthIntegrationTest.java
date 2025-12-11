@@ -23,7 +23,7 @@ class AuthIntegrationTest extends IntegrationTestBase {
         String uniqueEmail = "new_user_" + System.currentTimeMillis() + "@test.com";
         SignupRequest request = new SignupRequest(
             uniqueEmail,
-            "password123",
+            "Password123!",
             "신규유저"
         );
         
@@ -48,7 +48,7 @@ class AuthIntegrationTest extends IntegrationTestBase {
         String duplicateEmail = "duplicate_" + System.currentTimeMillis() + "@test.com";
         SignupRequest request1 = new SignupRequest(
             duplicateEmail,
-            "password123",
+            "Password123!",
             "유저1"
         );
         
@@ -61,7 +61,7 @@ class AuthIntegrationTest extends IntegrationTestBase {
         // 같은 이메일로 두 번째 회원가입 시도
         SignupRequest request2 = new SignupRequest(
             duplicateEmail,
-            "password456",
+            "Password456!",
             "유저2"
         );
         
@@ -71,7 +71,7 @@ class AuthIntegrationTest extends IntegrationTestBase {
                 .content(objectMapper.writeValueAsString(request2)))
                 .andDo(print())
                 .andExpect(status().isConflict())
-                .andExpect(jsonPath("$.success").value(false))
+                .andExpect(jsonPath("$.error").value("DUPLICATE_EMAIL"))
                 .andExpect(jsonPath("$.message").value("이미 사용 중인 이메일입니다: " + duplicateEmail));
     }
     
@@ -91,9 +91,9 @@ class AuthIntegrationTest extends IntegrationTestBase {
                 .content(objectMapper.writeValueAsString(request)))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.success").value(false))
+                .andExpect(jsonPath("$.error").value("VALIDATION_FAILED"))
                 .andExpect(jsonPath("$.message").value("입력값 검증 실패"))
-                .andExpect(jsonPath("$.data.password").exists());
+                .andExpect(jsonPath("$.validationErrors.password").exists());
     }
     
     @Test
@@ -102,7 +102,7 @@ class AuthIntegrationTest extends IntegrationTestBase {
         // given
         SignupRequest request = new SignupRequest(
             "invalid-email",  // @ 없는 이메일
-            "password123",
+            "Password123!",
             "유저"
         );
         
@@ -112,8 +112,8 @@ class AuthIntegrationTest extends IntegrationTestBase {
                 .content(objectMapper.writeValueAsString(request)))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.success").value(false))
-                .andExpect(jsonPath("$.data.email").exists());
+                .andExpect(jsonPath("$.error").value("VALIDATION_FAILED"))
+                .andExpect(jsonPath("$.validationErrors.email").exists());
     }
     
     @Test
@@ -121,7 +121,7 @@ class AuthIntegrationTest extends IntegrationTestBase {
     void login_success() throws Exception {
         // given
         String email = "login_test_" + System.currentTimeMillis() + "@test.com";
-        String password = "password123";
+        String password = "Password123!";
         
         // 회원가입 먼저
         SignupRequest signupRequest = new SignupRequest(email, password, "로그인테스트");
@@ -152,7 +152,7 @@ class AuthIntegrationTest extends IntegrationTestBase {
         // given
         LoginRequest request = new LoginRequest(
             "nonexistent_" + System.currentTimeMillis() + "@test.com",
-            "password123"
+            "Password123!"
         );
 
         // when & then
@@ -170,14 +170,14 @@ class AuthIntegrationTest extends IntegrationTestBase {
         String email = "wrong_pw_" + System.currentTimeMillis() + "@test.com";
 
         // 회원가입
-        SignupRequest signupRequest = new SignupRequest(email, "correctPassword", "유저");
+        SignupRequest signupRequest = new SignupRequest(email, "CorrectPassword123!", "유저");
         mockMvc.perform(post("/api/auth/signup")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(signupRequest)))
                 .andExpect(status().isCreated());
 
         // 잘못된 비밀번호로 로그인 시도
-        LoginRequest loginRequest = new LoginRequest(email, "wrongPassword");
+        LoginRequest loginRequest = new LoginRequest(email, "WrongPassword123!");
 
         // when & then
         mockMvc.perform(post("/api/auth/login")
@@ -199,7 +199,7 @@ class AuthIntegrationTest extends IntegrationTestBase {
                 .content(requestJson))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.success").value(false))
-                .andExpect(jsonPath("$.data.password").exists());
+                .andExpect(jsonPath("$.error").value("VALIDATION_FAILED"))
+                .andExpect(jsonPath("$.validationErrors.password").exists());
     }
 }

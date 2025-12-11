@@ -59,7 +59,7 @@ public abstract class IntegrationTestBase {
 
         SignupRequest signupRequest = new SignupRequest(
             uniqueEmail,
-            "password123",
+            "Password123!",
             "테스트유저"
         );
 
