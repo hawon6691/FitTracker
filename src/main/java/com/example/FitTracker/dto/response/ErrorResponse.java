@@ -16,7 +16,7 @@ public class ErrorResponse {
     private String message;
     private String path;
     private Map<String, String> validationErrors;
-    
+
     public static ErrorResponse of(int status, String error, String message, String path) {
         return ErrorResponse.builder()
                 .timestamp(LocalDateTime.now())

@@ -154,13 +154,13 @@ class AuthIntegrationTest extends IntegrationTestBase {
             "nonexistent_" + System.currentTimeMillis() + "@test.com",
             "password123"
         );
-        
+
         // when & then
         mockMvc.perform(post("/api/auth/login")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(request)))
                 .andDo(print())
-                .andExpect(status().isInternalServerError());  // 인증 실패는 500으로 처리됨
+                .andExpect(status().isUnauthorized());  // 인증 실패는 401로 처리됨
     }
     
     @Test
@@ -168,23 +168,23 @@ class AuthIntegrationTest extends IntegrationTestBase {
     void login_fail_wrongPassword() throws Exception {
         // given
         String email = "wrong_pw_" + System.currentTimeMillis() + "@test.com";
-        
+
         // 회원가입
         SignupRequest signupRequest = new SignupRequest(email, "correctPassword", "유저");
         mockMvc.perform(post("/api/auth/signup")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(signupRequest)))
                 .andExpect(status().isCreated());
-        
+
         // 잘못된 비밀번호로 로그인 시도
         LoginRequest loginRequest = new LoginRequest(email, "wrongPassword");
-        
+
         // when & then
         mockMvc.perform(post("/api/auth/login")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(loginRequest)))
                 .andDo(print())
-                .andExpect(status().isInternalServerError());  // 인증 실패는 500으로 처리됨
+                .andExpect(status().isUnauthorized());  // 인증 실패는 401로 처리됨
     }
     
     @Test

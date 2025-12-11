@@ -1,13 +1,17 @@
 package com.example.FitTracker.controller;
 
 import com.example.FitTracker.domain.RefreshToken;
+import com.example.FitTracker.domain.User;
 import com.example.FitTracker.dto.request.auth.LoginRequest;
 import com.example.FitTracker.dto.request.auth.RefreshTokenRequest;
 import com.example.FitTracker.dto.request.auth.SignupRequest;
 import com.example.FitTracker.dto.response.ApiResponse;
 import com.example.FitTracker.dto.response.auth.AuthResponse;
 import com.example.FitTracker.dto.response.auth.TokenRefreshResponse;
+import com.example.FitTracker.security.CustomUserDetailsService;
+import com.example.FitTracker.security.JwtTokenProvider;
 import com.example.FitTracker.service.AuthService;
+import com.example.FitTracker.service.RefreshTokenService;
 import com.example.FitTracker.service.UserService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -19,6 +23,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,6 +35,9 @@ public class AuthController {
 
     private final UserService userService;
     private final AuthService authService;
+    private final RefreshTokenService refreshTokenService;
+    private final CustomUserDetailsService customUserDetailsService;
+    private final JwtTokenProvider jwtTokenProvider;
 
     @PostMapping("/signup")
     @Operation(summary = "회원가입", description = "새로운 사용자를 등록합니다. 이메일은 고유해야 하며, 비밀번호는 8자 이상이어야 합니다.", responses = {

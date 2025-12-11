@@ -25,6 +25,7 @@ class StatsIntegrationTest extends IntegrationTestBase {
     
     /**
      * 테스트 데이터 준비
+     * 부모 클래스의 setUpMockMvc가 먼저 실행되고 사용자가 생성된 후 이 메서드가 실행됩니다.
      */
     @BeforeEach
     public void prepareTestData() throws Exception {

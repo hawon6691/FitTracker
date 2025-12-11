@@ -37,12 +37,17 @@ public abstract class IntegrationTestBase {
     protected Long userId;
 
     @BeforeEach
-    public void setUpMockMvc() {
+    public void setUpMockMvc() throws Exception {
         // MockMvc 설정
         this.mockMvc = MockMvcBuilders
                 .webAppContextSetup(context)
                 .apply(springSecurity())
                 .build();
+
+        // AuthIntegrationTest가 아닌 경우에만 자동으로 테스트 사용자 생성
+        if (!this.getClass().getSimpleName().equals("AuthIntegrationTest")) {
+            createTestUser();
+        }
     }
 
     /**
