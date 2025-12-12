@@ -5,6 +5,7 @@ import com.example.FitTracker.dto.request.auth.SignupRequest;
 import com.example.FitTracker.dto.response.auth.AuthResponse;
 import com.example.FitTracker.exception.DuplicateEmailException;
 import com.example.FitTracker.repository.UserRepository;
+import com.example.FitTracker.security.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -14,9 +15,10 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class UserService {
-    
+
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JwtTokenProvider jwtTokenProvider;
     
     @Transactional
     public AuthResponse signup(SignupRequest request) {
@@ -33,10 +35,12 @@ public class UserService {
                 .build();
         
         User savedUser = userRepository.save(user);
-        
-        // JWT 토큰 생성은 AuthService에서 처리 예정
+
+        // JWT 토큰 생성
+        String token = jwtTokenProvider.generateTokenFromEmail(savedUser.getEmail());
+
         return AuthResponse.of(
-                "temp-token",  // 임시 토큰 (나중에 JWT로 변경)
+                token,
                 savedUser.getId(),
                 savedUser.getEmail(),
                 savedUser.getName()

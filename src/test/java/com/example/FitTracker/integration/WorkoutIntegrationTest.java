@@ -53,7 +53,7 @@ class WorkoutIntegrationTest extends IntegrationTestBase {
     void createWorkoutSession_fail_missingDate() throws Exception {
         // given - 날짜 없음
         String requestJson = "{\"durationMinutes\":60,\"notes\":\"메모\"}";
-        
+
         // when & then
         mockMvc.perform(post("/api/workouts")
                 .header("Authorization", getAuthorizationHeader())
@@ -61,8 +61,8 @@ class WorkoutIntegrationTest extends IntegrationTestBase {
                 .content(requestJson))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.success").value(false))
-                .andExpect(jsonPath("$.data.workoutDate").exists());
+                .andExpect(jsonPath("$.error").value("VALIDATION_FAILED"))
+                .andExpect(jsonPath("$.validationErrors.workoutDate").exists());
     }
     
     @Test
@@ -104,7 +104,7 @@ class WorkoutIntegrationTest extends IntegrationTestBase {
         AddWorkoutSetRequest request = new AddWorkoutSetRequest(
             1L, 1, 10, new BigDecimal("80.0"), true
         );
-        
+
         // when & then
         mockMvc.perform(post("/api/workouts/999999/sets")
                 .header("Authorization", getAuthorizationHeader())
@@ -112,7 +112,7 @@ class WorkoutIntegrationTest extends IntegrationTestBase {
                 .content(objectMapper.writeValueAsString(request)))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.success").value(false))
+                .andExpect(jsonPath("$.error").exists())
                 .andExpect(jsonPath("$.message").value("운동 세션을 찾을 수 없습니다: 999999"));
     }
     
@@ -121,12 +121,12 @@ class WorkoutIntegrationTest extends IntegrationTestBase {
     void addWorkoutSet_fail_exerciseNotFound() throws Exception {
         // given
         Long sessionId = createTestWorkoutSession();
-        
+
         AddWorkoutSetRequest request = new AddWorkoutSetRequest(
             999999L,  // 존재하지 않는 운동 종목
             1, 10, new BigDecimal("80.0"), true
         );
-        
+
         // when & then
         mockMvc.perform(post("/api/workouts/" + sessionId + "/sets")
                 .header("Authorization", getAuthorizationHeader())
@@ -134,7 +134,7 @@ class WorkoutIntegrationTest extends IntegrationTestBase {
                 .content(objectMapper.writeValueAsString(request)))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.success").value(false))
+                .andExpect(jsonPath("$.error").exists())
                 .andExpect(jsonPath("$.message").value("운동 종목을 찾을 수 없습니다: 999999"));
     }
     

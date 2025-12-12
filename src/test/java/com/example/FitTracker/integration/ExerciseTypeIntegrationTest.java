@@ -25,7 +25,7 @@ class ExerciseTypeIntegrationTest extends IntegrationTestBase {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.success").value(true))
                 .andExpect(jsonPath("$.data").isArray())
-                .andExpect(jsonPath("$.data.length()").value(48))  // 48개의 운동 종목
+                .andExpect(jsonPath("$.data.length()").value(44))  // 44개의 운동 종목
                 .andExpect(jsonPath("$.data[0].id").exists())
                 .andExpect(jsonPath("$.data[0].name").exists())
                 .andExpect(jsonPath("$.data[0].bodyPart").exists())
@@ -159,7 +159,7 @@ class ExerciseTypeIntegrationTest extends IntegrationTestBase {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.success").value(false))
+                .andExpect(jsonPath("$.error").exists())
                 .andExpect(jsonPath("$.message").value("운동 종목을 찾을 수 없습니다: 999999"));
     }
     

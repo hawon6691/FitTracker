@@ -5,6 +5,7 @@ import com.example.FitTracker.dto.request.auth.SignupRequest;
 import com.example.FitTracker.dto.response.auth.AuthResponse;
 import com.example.FitTracker.exception.DuplicateEmailException;
 import com.example.FitTracker.repository.UserRepository;
+import com.example.FitTracker.security.JwtTokenProvider;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,19 +18,23 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 @DisplayName("UserService 단위 테스트")
 class UserServiceTest {
-    
+
     @Mock
     private UserRepository userRepository;
-    
+
     @Mock
     private PasswordEncoder passwordEncoder;
-    
+
+    @Mock
+    private JwtTokenProvider jwtTokenProvider;
+
     @InjectMocks
     private UserService userService;
     
@@ -53,7 +58,8 @@ class UserServiceTest {
         given(userRepository.existsByEmail(request.getEmail())).willReturn(false);
         given(passwordEncoder.encode(request.getPassword())).willReturn("encoded_password");
         given(userRepository.save(any(User.class))).willReturn(savedUser);
-        
+        given(jwtTokenProvider.generateTokenFromEmail(anyString())).willReturn("mocked-jwt-token");
+
         // when
         AuthResponse response = userService.signup(request);
         

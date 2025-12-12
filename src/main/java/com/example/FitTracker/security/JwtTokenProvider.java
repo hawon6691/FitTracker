@@ -27,14 +27,19 @@ public class JwtTokenProvider {
         this.jwtExpirationMs = jwtExpirationMs;
     }
     
-    // JWT 토큰 생성
+    // JWT 토큰 생성 (Authentication 객체 사용)
     public String generateToken(Authentication authentication) {
         UserDetails userPrincipal = (UserDetails) authentication.getPrincipal();
+        return generateTokenFromEmail(userPrincipal.getUsername());
+    }
+
+    // JWT 토큰 생성 (이메일 직접 사용)
+    public String generateTokenFromEmail(String email) {
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + jwtExpirationMs);
-        
+
         return Jwts.builder()
-                .subject(userPrincipal.getUsername())
+                .subject(email)
                 .issuedAt(now)
                 .expiration(expiryDate)
                 .signWith(key)

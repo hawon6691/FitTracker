@@ -62,7 +62,7 @@ class RoutineIntegrationTest extends IntegrationTestBase {
     void createRoutine_fail_missingFields() throws Exception {
         // given - 이름 없음
         String requestJson = "{\"description\":\"설명만 있음\",\"exercises\":[]}";
-        
+
         // when & then
         mockMvc.perform(post("/api/routines")
                 .header("Authorization", getAuthorizationHeader())
@@ -70,8 +70,8 @@ class RoutineIntegrationTest extends IntegrationTestBase {
                 .content(requestJson))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.success").value(false))
-                .andExpect(jsonPath("$.data.name").exists());
+                .andExpect(jsonPath("$.error").value("VALIDATION_FAILED"))
+                .andExpect(jsonPath("$.validationErrors.name").exists());
     }
     
     @Test
@@ -81,13 +81,13 @@ class RoutineIntegrationTest extends IntegrationTestBase {
         List<RoutineExerciseRequest> exercises = Arrays.asList(
             new RoutineExerciseRequest(999999L, 3, 10, new BigDecimal("80.0"))  // 존재하지 않는 ID
         );
-        
+
         CreateRoutineRequest request = new CreateRoutineRequest(
             "테스트 루틴",
             "설명",
             exercises
         );
-        
+
         // when & then
         mockMvc.perform(post("/api/routines")
                 .header("Authorization", getAuthorizationHeader())
@@ -95,7 +95,7 @@ class RoutineIntegrationTest extends IntegrationTestBase {
                 .content(objectMapper.writeValueAsString(request)))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.success").value(false))
+                .andExpect(jsonPath("$.error").exists())
                 .andExpect(jsonPath("$.message").value("운동 종목을 찾을 수 없습니다: 999999"));
     }
     
@@ -147,7 +147,7 @@ class RoutineIntegrationTest extends IntegrationTestBase {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.success").value(false))
+                .andExpect(jsonPath("$.error").exists())
                 .andExpect(jsonPath("$.message").value("루틴을 찾을 수 없습니다: 999999"));
     }
     
@@ -191,7 +191,7 @@ class RoutineIntegrationTest extends IntegrationTestBase {
             "설명",
             Arrays.asList()
         );
-        
+
         // when & then
         mockMvc.perform(put("/api/routines/999999")
                 .header("Authorization", getAuthorizationHeader())
@@ -199,7 +199,7 @@ class RoutineIntegrationTest extends IntegrationTestBase {
                 .content(objectMapper.writeValueAsString(updateRequest)))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.success").value(false));
+                .andExpect(jsonPath("$.error").exists());
     }
     
     @Test
@@ -233,7 +233,7 @@ class RoutineIntegrationTest extends IntegrationTestBase {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.success").value(false));
+                .andExpect(jsonPath("$.error").exists());
     }
     
     /**

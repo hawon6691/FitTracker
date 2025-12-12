@@ -70,27 +70,22 @@ public abstract class IntegrationTestBase {
                 .andReturn();
 
         String signupResponse = signupResult.getResponse().getContentAsString();
-        // JSON 파싱을 수동으로 처리 (간단한 방법)
-        this.accessToken = extractTokenFromResponse(signupResponse);
-        this.userId = extractUserIdFromResponse(signupResponse);
-    }
+        // JSON 파싱 using ObjectMapper
+        try {
+            var jsonNode = objectMapper.readTree(signupResponse);
+            var dataNode = jsonNode.get("data");
 
-    private String extractTokenFromResponse(String json) {
-        int tokenStart = json.indexOf("\"token\":\"") + 9;
-        int tokenEnd = json.indexOf("\"", tokenStart);
-        return json.substring(tokenStart, tokenEnd);
-    }
-
-    private Long extractUserIdFromResponse(String json) {
-        int userIdStart = json.indexOf("\"userId\":") + 9;
-        int userIdEnd = json.indexOf(",", userIdStart);
-        if (userIdEnd == -1) {
-            userIdEnd = json.indexOf("}", userIdStart);
+            this.accessToken = dataNode.get("token").asText();
+            this.userId = dataNode.get("userId").asLong();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to parse signup response: " + signupResponse, e);
         }
-        return Long.parseLong(json.substring(userIdStart, userIdEnd));
     }
     
     protected String getAuthorizationHeader() {
+        if (accessToken == null || accessToken.isEmpty()) {
+            throw new IllegalStateException("Access token is null or empty!");
+        }
         return "Bearer " + accessToken;
     }
 }
