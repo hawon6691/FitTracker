@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - 운동 종목 API 통합 테스트</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>운동 종목 API 통합 테스트</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.example.FitTracker.integration.html">com.example.FitTracker.integration</a> &gt; ExerciseTypeIntegrationTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">12</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">1.221s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="tab-container">
+<ul class="tabLinks">
+<li>
+<a href="#">Tests</a>
+</li>
+<li>
+<a href="#">Standard output</a>
+</li>
+</ul>
+<div class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Method name</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">잘못된 토큰으로 운동 종목 조회 실패</td>
+<td class="success">getAllExercises_invalidToken()</td>
+<td class="success">0.094s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">전체 운동 종목 조회 성공</td>
+<td class="success">getAllExercises_success()</td>
+<td class="success">0.112s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">인증 없이 운동 종목 조회 실패</td>
+<td class="success">getAllExercises_unauthorized()</td>
+<td class="success">0.094s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">존재하지 않는 운동 종목 조회</td>
+<td class="success">getExerciseById_notFound()</td>
+<td class="success">0.100s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">특정 운동 종목 상세 조회 성공</td>
+<td class="success">getExerciseById_success()</td>
+<td class="success">0.101s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">신체 부위별 운동 종목 조회 - 복근</td>
+<td class="success">getExercisesByBodyPart_abs()</td>
+<td class="success">0.095s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">신체 부위별 운동 종목 조회 - 팔</td>
+<td class="success">getExercisesByBodyPart_arms()</td>
+<td class="success">0.113s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">신체 부위별 운동 종목 조회 - 등</td>
+<td class="success">getExercisesByBodyPart_back()</td>
+<td class="success">0.115s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">신체 부위별 운동 종목 조회 - 가슴</td>
+<td class="success">getExercisesByBodyPart_chest()</td>
+<td class="success">0.095s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">신체 부위별 운동 종목 조회 - 다리</td>
+<td class="success">getExercisesByBodyPart_legs()</td>
+<td class="success">0.101s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">존재하지 않는 신체 부위 조회</td>
+<td class="success">getExercisesByBodyPart_notFound()</td>
+<td class="success">0.094s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">신체 부위별 운동 종목 조회 - 어깨</td>
+<td class="success">getExercisesByBodyPart_shoulders()</td>
+<td class="success">0.107s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre id="class-stdout">2025-12-12 19:17:03.793 [Test worker] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.FitTracker.integration.ExerciseTypeIntegrationTest]: ExerciseTypeIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-12-12 19:17:03.795 [Test worker] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.FitTracker.FitTrackerApplication for test class com.example.FitTracker.integration.ExerciseTypeIntegrationTest
+2025-12-12 19:17:03.801 [Test worker] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-12 19:17:03.802 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2025-12-12 19:17:03.802 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 0 ms
+2025-12-12 19:17:03.805 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u.id id 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id 
+        from
+            users u1_0 
+        where
+            u1_0.email=? 
+        fetch
+            first ? rows only
+2025-12-12 19:17:03.883 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.User
+        */insert 
+    into
+        users (created_at, email, name, password, id) 
+    values
+        (?, ?, ?, ?, default)
+2025-12-12 19:17:03.889 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:03.897 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        e 
+    FROM
+        ExerciseType e 
+    WHERE
+        e.bodyPart = :bodyPart */ select
+            et1_0.id,
+            et1_0.body_part,
+            et1_0.description,
+            et1_0.name 
+        from
+            exercise_types et1_0 
+        where
+            et1_0.body_part=?
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/exercises
+       Parameters = {bodyPart=[어깨]}
+          Headers = [Content-Type:&quot;application/json&quot;, Authorization:&quot;Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0XzE3NjU1MzQ2MjM4MDNAdGVzdC5jb20iLCJpYXQiOjE3NjU1MzQ2MjMsImV4cCI6MTc2NTYyMTAyM30.M9Q2GbpJptvFre4jITApbGNYN3iikaSTVjfMIGFA8zVVxk3pW0t9A3gdcnPBCEC0&quot;]
+             Body = &lt;no character encoding set&gt;
+    Session Attrs = {}
+
+Handler:
+             Type = com.example.FitTracker.controller.ExerciseTypeController
+           Method = com.example.FitTracker.controller.ExerciseTypeController#getAllExercises(String)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:&quot;application/json&quot;, X-Content-Type-Options:&quot;nosniff&quot;, X-XSS-Protection:&quot;0&quot;, Cache-Control:&quot;no-cache, no-store, max-age=0, must-revalidate&quot;, Pragma:&quot;no-cache&quot;, Expires:&quot;0&quot;, X-Frame-Options:&quot;DENY&quot;]
+     Content type = application/json
+             Body = {&quot;success&quot;:true,&quot;message&quot;:&quot;성공&quot;,&quot;data&quot;:[{&quot;id&quot;:21,&quot;name&quot;:&quot;숄더 프레스&quot;,&quot;bodyPart&quot;:&quot;어깨&quot;,&quot;description&quot;:&quot;어깨 전체를 발달시키는 대표적인 운동입니다.&quot;},{&quot;id&quot;:22,&quot;name&quot;:&quot;덤벨 숄더 프레스&quot;,&quot;bodyPart&quot;:&quot;어깨&quot;,&quot;description&quot;:&quot;덤벨을 이용하여 어깨 근육의 가동 범위를 넓히는 운동입니다.&quot;},{&quot;id&quot;:23,&quot;name&quot;:&quot;사이드 레터럴 레이즈&quot;,&quot;bodyPart&quot;:&quot;어깨&quot;,&quot;description&quot;:&quot;측면 삼각근을 집중적으로 발달시키는 고립 운동입니다.&quot;},{&quot;id&quot;:24,&quot;name&quot;:&quot;프론트 레이즈&quot;,&quot;bodyPart&quot;:&quot;어깨&quot;,&quot;description&quot;:&quot;전면 삼각근을 집중적으로 발달시키는 고립 운동입니다.&quot;},{&quot;id&quot;:25,&quot;name&quot;:&quot;리어 델트 플라이&quot;,&quot;bodyPart&quot;:&quot;어깨&quot;,&quot;description&quot;:&quot;후면 삼각근을 집중적으로 발달시키는 고립 운동입니다.&quot;},{&quot;id&quot;:26,&quot;name&quot;:&quot;페이스 풀&quot;,&quot;bodyPart&quot;:&quot;어깨&quot;,&quot;description&quot;:&quot;후면 삼각근과 회전근개를 강화하는 운동입니다.&quot;},{&quot;id&quot;:27,&quot;name&quot;:&quot;업라이트 로우&quot;,&quot;bodyPart&quot;:&quot;어깨&quot;,&quot;description&quot;:&quot;측면 삼각근과 승모근을 발달시키는 운동입니다.&quot;}]}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2025-12-12 19:17:03.911 [Test worker] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-12 19:17:03.911 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2025-12-12 19:17:03.913 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 2 ms
+2025-12-12 19:17:03.916 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u.id id 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id 
+        from
+            users u1_0 
+        where
+            u1_0.email=? 
+        fetch
+            first ? rows only
+2025-12-12 19:17:03.993 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.User
+        */insert 
+    into
+        users (created_at, email, name, password, id) 
+    values
+        (?, ?, ?, ?, default)
+2025-12-12 19:17:03.997 [Test worker] ERROR c.e.F.security.JwtTokenProvider - JWT validation error: Invalid compact JWT string: Compact JWSs must contain exactly 2 period characters, and compact JWEs must contain exactly 4.  Found: 0
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/exercises
+       Parameters = {}
+          Headers = [Content-Type:&quot;application/json&quot;, Authorization:&quot;Bearer invalid-token&quot;]
+             Body = &lt;no character encoding set&gt;
+    Session Attrs = {}
+
+Handler:
+             Type = null
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 403
+    Error message = Forbidden
+          Headers = [X-Content-Type-Options:&quot;nosniff&quot;, X-XSS-Protection:&quot;0&quot;, Cache-Control:&quot;no-cache, no-store, max-age=0, must-revalidate&quot;, Pragma:&quot;no-cache&quot;, Expires:&quot;0&quot;, X-Frame-Options:&quot;DENY&quot;]
+     Content type = null
+             Body = 
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2025-12-12 19:17:04.005 [Test worker] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-12 19:17:04.005 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2025-12-12 19:17:04.006 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms
+2025-12-12 19:17:04.009 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u.id id 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id 
+        from
+            users u1_0 
+        where
+            u1_0.email=? 
+        fetch
+            first ? rows only
+2025-12-12 19:17:04.090 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.User
+        */insert 
+    into
+        users (created_at, email, name, password, id) 
+    values
+        (?, ?, ?, ?, default)
+2025-12-12 19:17:04.096 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:04.098 [Test worker] DEBUG org.hibernate.SQL - 
+    select
+        et1_0.id,
+        et1_0.body_part,
+        et1_0.description,
+        et1_0.name 
+    from
+        exercise_types et1_0 
+    where
+        et1_0.id=?
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/exercises/1
+       Parameters = {}
+          Headers = [Content-Type:&quot;application/json&quot;, Authorization:&quot;Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0XzE3NjU1MzQ2MjQwMDZAdGVzdC5jb20iLCJpYXQiOjE3NjU1MzQ2MjQsImV4cCI6MTc2NTYyMTAyNH0.aSLj86gbMlwAJEFn7_4VvlYm-KD3XLxtjkQj8v2_y9BfZzKPbR-36yINAHSJkQC7&quot;]
+             Body = &lt;no character encoding set&gt;
+    Session Attrs = {}
+
+Handler:
+             Type = com.example.FitTracker.controller.ExerciseTypeController
+           Method = com.example.FitTracker.controller.ExerciseTypeController#getExerciseById(Long)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:&quot;application/json&quot;, X-Content-Type-Options:&quot;nosniff&quot;, X-XSS-Protection:&quot;0&quot;, Cache-Control:&quot;no-cache, no-store, max-age=0, must-revalidate&quot;, Pragma:&quot;no-cache&quot;, Expires:&quot;0&quot;, X-Frame-Options:&quot;DENY&quot;]
+     Content type = application/json
+             Body = {&quot;success&quot;:true,&quot;message&quot;:&quot;성공&quot;,&quot;data&quot;:{&quot;id&quot;:1,&quot;name&quot;:&quot;벤치 프레스&quot;,&quot;bodyPart&quot;:&quot;가슴&quot;,&quot;description&quot;:&quot;바벨을 사용하여 가슴 전체를 발달시키는 대표적인 운동입니다.&quot;}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2025-12-12 19:17:04.108 [Test worker] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-12 19:17:04.108 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2025-12-12 19:17:04.108 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 0 ms
+2025-12-12 19:17:04.112 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u.id id 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id 
+        from
+            users u1_0 
+        where
+            u1_0.email=? 
+        fetch
+            first ? rows only
+2025-12-12 19:17:04.193 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.User
+        */insert 
+    into
+        users (created_at, email, name, password, id) 
+    values
+        (?, ?, ?, ?, default)
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/exercises
+       Parameters = {}
+          Headers = [Content-Type:&quot;application/json&quot;]
+             Body = &lt;no character encoding set&gt;
+    Session Attrs = {}
+
+Handler:
+             Type = null
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 403
+    Error message = Forbidden
+          Headers = [X-Content-Type-Options:&quot;nosniff&quot;, X-XSS-Protection:&quot;0&quot;, Cache-Control:&quot;no-cache, no-store, max-age=0, must-revalidate&quot;, Pragma:&quot;no-cache&quot;, Expires:&quot;0&quot;, X-Frame-Options:&quot;DENY&quot;]
+     Content type = null
+             Body = 
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2025-12-12 19:17:04.201 [Test worker] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-12 19:17:04.201 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2025-12-12 19:17:04.201 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 0 ms
+2025-12-12 19:17:04.205 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u.id id 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id 
+        from
+            users u1_0 
+        where
+            u1_0.email=? 
+        fetch
+            first ? rows only
+2025-12-12 19:17:04.283 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.User
+        */insert 
+    into
+        users (created_at, email, name, password, id) 
+    values
+        (?, ?, ?, ?, default)
+2025-12-12 19:17:04.290 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:04.293 [Test worker] DEBUG org.hibernate.SQL - 
+    select
+        et1_0.id,
+        et1_0.body_part,
+        et1_0.description,
+        et1_0.name 
+    from
+        exercise_types et1_0 
+    where
+        et1_0.id=?
+2025-12-12 19:17:04.295 [Test worker] WARN  c.e.F.e.GlobalExceptionHandler - 잘못된 인자: 운동 종목을 찾을 수 없습니다: 999999
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/exercises/999999
+       Parameters = {}
+          Headers = [Content-Type:&quot;application/json&quot;, Authorization:&quot;Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0XzE3NjU1MzQ2MjQyMDNAdGVzdC5jb20iLCJpYXQiOjE3NjU1MzQ2MjQsImV4cCI6MTc2NTYyMTAyNH0.xNqyS-Rk93NrGEjUitlLguHW7e_qCfwnh60R3cUP8q7xsIti-z9w9X670rq30ufE&quot;]
+             Body = &lt;no character encoding set&gt;
+    Session Attrs = {}
+
+Handler:
+             Type = com.example.FitTracker.controller.ExerciseTypeController
+           Method = com.example.FitTracker.controller.ExerciseTypeController#getExerciseById(Long)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = java.lang.IllegalArgumentException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 400
+    Error message = null
+          Headers = [Content-Type:&quot;application/json&quot;, X-Content-Type-Options:&quot;nosniff&quot;, X-XSS-Protection:&quot;0&quot;, Cache-Control:&quot;no-cache, no-store, max-age=0, must-revalidate&quot;, Pragma:&quot;no-cache&quot;, Expires:&quot;0&quot;, X-Frame-Options:&quot;DENY&quot;]
+     Content type = application/json
+             Body = {&quot;timestamp&quot;:&quot;2025-12-12T19:17:04.2955811&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;INVALID_ARGUMENT&quot;,&quot;message&quot;:&quot;운동 종목을 찾을 수 없습니다: 999999&quot;,&quot;path&quot;:&quot;/api/exercises/999999&quot;,&quot;validationErrors&quot;:null}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2025-12-12 19:17:04.303 [Test worker] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-12 19:17:04.303 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2025-12-12 19:17:04.306 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 3 ms
+2025-12-12 19:17:04.309 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u.id id 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id 
+        from
+            users u1_0 
+        where
+            u1_0.email=? 
+        fetch
+            first ? rows only
+2025-12-12 19:17:04.396 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.User
+        */insert 
+    into
+        users (created_at, email, name, password, id) 
+    values
+        (?, ?, ?, ?, default)
+2025-12-12 19:17:04.404 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:04.406 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        e 
+    FROM
+        ExerciseType e 
+    WHERE
+        e.bodyPart = :bodyPart */ select
+            et1_0.id,
+            et1_0.body_part,
+            et1_0.description,
+            et1_0.name 
+        from
+            exercise_types et1_0 
+        where
+            et1_0.body_part=?
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/exercises
+       Parameters = {bodyPart=[팔]}
+          Headers = [Content-Type:&quot;application/json&quot;, Authorization:&quot;Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0XzE3NjU1MzQ2MjQzMDZAdGVzdC5jb20iLCJpYXQiOjE3NjU1MzQ2MjQsImV4cCI6MTc2NTYyMTAyNH0.kYabVuLWRvhXJwkowahHUF-f3AZoXhDLDcJ8x1kcTRW15dB4Va2FW3CbwBSsU1Uj&quot;]
+             Body = &lt;no character encoding set&gt;
+    Session Attrs = {}
+
+Handler:
+             Type = com.example.FitTracker.controller.ExerciseTypeController
+           Method = com.example.FitTracker.controller.ExerciseTypeController#getAllExercises(String)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:&quot;application/json&quot;, X-Content-Type-Options:&quot;nosniff&quot;, X-XSS-Protection:&quot;0&quot;, Cache-Control:&quot;no-cache, no-store, max-age=0, must-revalidate&quot;, Pragma:&quot;no-cache&quot;, Expires:&quot;0&quot;, X-Frame-Options:&quot;DENY&quot;]
+     Content type = application/json
+             Body = {&quot;success&quot;:true,&quot;message&quot;:&quot;성공&quot;,&quot;data&quot;:[{&quot;id&quot;:28,&quot;name&quot;:&quot;바벨 컬&quot;,&quot;bodyPart&quot;:&quot;팔&quot;,&quot;description&quot;:&quot;이두근을 발달시키는 가장 기본적인 운동입니다.&quot;},{&quot;id&quot;:29,&quot;name&quot;:&quot;덤벨 컬&quot;,&quot;bodyPart&quot;:&quot;팔&quot;,&quot;description&quot;:&quot;덤벨을 이용하여 이두근을 발달시키는 운동입니다.&quot;},{&quot;id&quot;:30,&quot;name&quot;:&quot;해머 컬&quot;,&quot;bodyPart&quot;:&quot;팔&quot;,&quot;description&quot;:&quot;이두근과 상완근을 동시에 발달시키는 운동입니다.&quot;},{&quot;id&quot;:31,&quot;name&quot;:&quot;프리처 컬&quot;,&quot;bodyPart&quot;:&quot;팔&quot;,&quot;description&quot;:&quot;이두근의 하부를 집중적으로 발달시키는 운동입니다.&quot;},{&quot;id&quot;:32,&quot;name&quot;:&quot;케이블 컬&quot;,&quot;bodyPart&quot;:&quot;팔&quot;,&quot;description&quot;:&quot;케이블을 이용하여 이두근에 지속적인 긴장을 주는 운동입니다.&quot;},{&quot;id&quot;:33,&quot;name&quot;:&quot;트라이셉스 푸시다운&quot;,&quot;bodyPart&quot;:&quot;팔&quot;,&quot;description&quot;:&quot;케이블을 이용하여 삼두근을 발달시키는 운동입니다.&quot;},{&quot;id&quot;:34,&quot;name&quot;:&quot;오버헤드 트라이셉스 익스텐션&quot;,&quot;bodyPart&quot;:&quot;팔&quot;,&quot;description&quot;:&quot;삼두근의 장두를 집중적으로 발달시키는 운동입니다.&quot;},{&quot;id&quot;:35,&quot;name&quot;:&quot;스컬 크러셔&quot;,&quot;bodyPart&quot;:&quot;팔&quot;,&quot;description&quot;:&quot;바벨이나 덤벨을 이용하여 삼두근을 발달시키는 운동입니다.&quot;},{&quot;id&quot;:36,&quot;name&quot;:&quot;클로즈 그립 벤치 프레스&quot;,&quot;bodyPart&quot;:&quot;팔&quot;,&quot;description&quot;:&quot;삼두근을 집중적으로 발달시키는 복합 운동입니다.&quot;}]}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2025-12-12 19:17:04.418 [Test worker] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-12 19:17:04.418 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2025-12-12 19:17:04.420 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 2 ms
+2025-12-12 19:17:04.423 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u.id id 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id 
+        from
+            users u1_0 
+        where
+            u1_0.email=? 
+        fetch
+            first ? rows only
+2025-12-12 19:17:04.513 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.User
+        */insert 
+    into
+        users (created_at, email, name, password, id) 
+    values
+        (?, ?, ?, ?, default)
+2025-12-12 19:17:04.521 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:04.523 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        e 
+    FROM
+        ExerciseType e 
+    WHERE
+        e.bodyPart = :bodyPart */ select
+            et1_0.id,
+            et1_0.body_part,
+            et1_0.description,
+            et1_0.name 
+        from
+            exercise_types et1_0 
+        where
+            et1_0.body_part=?
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/exercises
+       Parameters = {bodyPart=[등]}
+          Headers = [Content-Type:&quot;application/json&quot;, Authorization:&quot;Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0XzE3NjU1MzQ2MjQ0MjBAdGVzdC5jb20iLCJpYXQiOjE3NjU1MzQ2MjQsImV4cCI6MTc2NTYyMTAyNH0.dmROVEZtRi9yYUTE1Ieh3ReJVCyNfQhwyJtv37QoySZ7wbQPy2iVXhl-iWLOKU_F&quot;]
+             Body = &lt;no character encoding set&gt;
+    Session Attrs = {}
+
+Handler:
+             Type = com.example.FitTracker.controller.ExerciseTypeController
+           Method = com.example.FitTracker.controller.ExerciseTypeController#getAllExercises(String)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:&quot;application/json&quot;, X-Content-Type-Options:&quot;nosniff&quot;, X-XSS-Protection:&quot;0&quot;, Cache-Control:&quot;no-cache, no-store, max-age=0, must-revalidate&quot;, Pragma:&quot;no-cache&quot;, Expires:&quot;0&quot;, X-Frame-Options:&quot;DENY&quot;]
+     Content type = application/json
+             Body = {&quot;success&quot;:true,&quot;message&quot;:&quot;성공&quot;,&quot;data&quot;:[{&quot;id&quot;:7,&quot;name&quot;:&quot;데드리프트&quot;,&quot;bodyPart&quot;:&quot;등&quot;,&quot;description&quot;:&quot;등 전체와 하체, 코어를 동시에 발달시키는 복합 운동입니다.&quot;},{&quot;id&quot;:8,&quot;name&quot;:&quot;풀업&quot;,&quot;bodyPart&quot;:&quot;등&quot;,&quot;description&quot;:&quot;자신의 체중을 이용하여 광배근을 발달시키는 운동입니다.&quot;},{&quot;id&quot;:9,&quot;name&quot;:&quot;랫 풀다운&quot;,&quot;bodyPart&quot;:&quot;등&quot;,&quot;description&quot;:&quot;광배근의 넓이를 발달시키는 대표적인 등 운동입니다.&quot;},{&quot;id&quot;:10,&quot;name&quot;:&quot;바벨 로우&quot;,&quot;bodyPart&quot;:&quot;등&quot;,&quot;description&quot;:&quot;등 중앙부와 두께를 발달시키는 복합 운동입니다.&quot;},{&quot;id&quot;:11,&quot;name&quot;:&quot;덤벨 로우&quot;,&quot;bodyPart&quot;:&quot;등&quot;,&quot;description&quot;:&quot;한쪽씩 집중하여 등 근육을 발달시키는 운동입니다.&quot;},{&quot;id&quot;:12,&quot;name&quot;:&quot;시티드 로우&quot;,&quot;bodyPart&quot;:&quot;등&quot;,&quot;description&quot;:&quot;케이블 머신을 이용하여 등 중앙부를 발달시키는 운동입니다.&quot;},{&quot;id&quot;:13,&quot;name&quot;:&quot;티바 로우&quot;,&quot;bodyPart&quot;:&quot;등&quot;,&quot;description&quot;:&quot;상부 등과 승모근을 발달시키는 운동입니다.&quot;}]}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2025-12-12 19:17:04.532 [Test worker] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-12 19:17:04.532 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2025-12-12 19:17:04.532 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 0 ms
+2025-12-12 19:17:04.536 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u.id id 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id 
+        from
+            users u1_0 
+        where
+            u1_0.email=? 
+        fetch
+            first ? rows only
+2025-12-12 19:17:04.618 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.User
+        */insert 
+    into
+        users (created_at, email, name, password, id) 
+    values
+        (?, ?, ?, ?, default)
+2025-12-12 19:17:04.623 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:04.625 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        e 
+    FROM
+        ExerciseType e 
+    WHERE
+        e.bodyPart = :bodyPart */ select
+            et1_0.id,
+            et1_0.body_part,
+            et1_0.description,
+            et1_0.name 
+        from
+            exercise_types et1_0 
+        where
+            et1_0.body_part=?
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/exercises
+       Parameters = {bodyPart=[다리]}
+          Headers = [Content-Type:&quot;application/json&quot;, Authorization:&quot;Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0XzE3NjU1MzQ2MjQ1MzJAdGVzdC5jb20iLCJpYXQiOjE3NjU1MzQ2MjQsImV4cCI6MTc2NTYyMTAyNH0.5cqYivh1N1aiwydO77k710j9_7tYLPN0zeA78Vu2rK95La2JLVDGjGrjI-I0n4Rp&quot;]
+             Body = &lt;no character encoding set&gt;
+    Session Attrs = {}
+
+Handler:
+             Type = com.example.FitTracker.controller.ExerciseTypeController
+           Method = com.example.FitTracker.controller.ExerciseTypeController#getAllExercises(String)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:&quot;application/json&quot;, X-Content-Type-Options:&quot;nosniff&quot;, X-XSS-Protection:&quot;0&quot;, Cache-Control:&quot;no-cache, no-store, max-age=0, must-revalidate&quot;, Pragma:&quot;no-cache&quot;, Expires:&quot;0&quot;, X-Frame-Options:&quot;DENY&quot;]
+     Content type = application/json
+             Body = {&quot;success&quot;:true,&quot;message&quot;:&quot;성공&quot;,&quot;data&quot;:[{&quot;id&quot;:14,&quot;name&quot;:&quot;스쿼트&quot;,&quot;bodyPart&quot;:&quot;다리&quot;,&quot;description&quot;:&quot;하체 전체를 발달시키는 가장 기본적이고 효과적인 운동입니다.&quot;},{&quot;id&quot;:15,&quot;name&quot;:&quot;레그 프레스&quot;,&quot;bodyPart&quot;:&quot;다리&quot;,&quot;description&quot;:&quot;머신을 이용하여 하체 근육을 안전하게 발달시키는 운동입니다.&quot;},{&quot;id&quot;:16,&quot;name&quot;:&quot;레그 익스텐션&quot;,&quot;bodyPart&quot;:&quot;다리&quot;,&quot;description&quot;:&quot;대퇴사두근을 집중적으로 발달시키는 고립 운동입니다.&quot;},{&quot;id&quot;:17,&quot;name&quot;:&quot;레그 컬&quot;,&quot;bodyPart&quot;:&quot;다리&quot;,&quot;description&quot;:&quot;햄스트링을 집중적으로 발달시키는 고립 운동입니다.&quot;},{&quot;id&quot;:18,&quot;name&quot;:&quot;런지&quot;,&quot;bodyPart&quot;:&quot;다리&quot;,&quot;description&quot;:&quot;하체 전체와 균형감각을 발달시키는 운동입니다.&quot;},{&quot;id&quot;:19,&quot;name&quot;:&quot;불가리안 스플릿 스쿼트&quot;,&quot;bodyPart&quot;:&quot;다리&quot;,&quot;description&quot;:&quot;한쪽 다리씩 집중하여 하체를 발달시키는 운동입니다.&quot;},{&quot;id&quot;:20,&quot;name&quot;:&quot;카프 레이즈&quot;,&quot;bodyPart&quot;:&quot;다리&quot;,&quot;description&quot;:&quot;종아리 근육을 집중적으로 발달시키는 운동입니다.&quot;}]}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2025-12-12 19:17:04.633 [Test worker] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-12 19:17:04.634 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2025-12-12 19:17:04.635 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms
+2025-12-12 19:17:04.638 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u.id id 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id 
+        from
+            users u1_0 
+        where
+            u1_0.email=? 
+        fetch
+            first ? rows only
+2025-12-12 19:17:04.713 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.User
+        */insert 
+    into
+        users (created_at, email, name, password, id) 
+    values
+        (?, ?, ?, ?, default)
+2025-12-12 19:17:04.718 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:04.732 [Test worker] DEBUG org.hibernate.SQL - 
+    /* &lt;criteria&gt; */ select
+        et1_0.id,
+        et1_0.body_part,
+        et1_0.description,
+        et1_0.name 
+    from
+        exercise_types et1_0
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/exercises
+       Parameters = {}
+          Headers = [Content-Type:&quot;application/json&quot;, Authorization:&quot;Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0XzE3NjU1MzQ2MjQ2MzVAdGVzdC5jb20iLCJpYXQiOjE3NjU1MzQ2MjQsImV4cCI6MTc2NTYyMTAyNH0.2LDbXMeRRS1BlSAblelWJ9tO4MvhO7I5mQv9OmHQpkYgTgkvfNGHXYj10psIxywN&quot;]
+             Body = &lt;no character encoding set&gt;
+    Session Attrs = {}
+
+Handler:
+             Type = com.example.FitTracker.controller.ExerciseTypeController
+           Method = com.example.FitTracker.controller.ExerciseTypeController#getAllExercises(String)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:&quot;application/json&quot;, X-Content-Type-Options:&quot;nosniff&quot;, X-XSS-Protection:&quot;0&quot;, Cache-Control:&quot;no-cache, no-store, max-age=0, must-revalidate&quot;, Pragma:&quot;no-cache&quot;, Expires:&quot;0&quot;, X-Frame-Options:&quot;DENY&quot;]
+     Content type = application/json
+             Body = {&quot;success&quot;:true,&quot;message&quot;:&quot;성공&quot;,&quot;data&quot;:[{&quot;id&quot;:1,&quot;name&quot;:&quot;벤치 프레스&quot;,&quot;bodyPart&quot;:&quot;가슴&quot;,&quot;description&quot;:&quot;바벨을 사용하여 가슴 전체를 발달시키는 대표적인 운동입니다.&quot;},{&quot;id&quot;:2,&quot;name&quot;:&quot;인클라인 벤치 프레스&quot;,&quot;bodyPart&quot;:&quot;가슴&quot;,&quot;description&quot;:&quot;상부 가슴 발달에 효과적인 벤치 프레스 변형 운동입니다.&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;덤벨 프레스&quot;,&quot;bodyPart&quot;:&quot;가슴&quot;,&quot;description&quot;:&quot;덤벨을 사용하여 가슴 근육의 가동 범위를 넓히는 운동입니다.&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;덤벨 플라이&quot;,&quot;bodyPart&quot;:&quot;가슴&quot;,&quot;description&quot;:&quot;가슴 근육의 스트레칭과 수축을 강조하는 고립 운동입니다.&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;체스트 프레스 머신&quot;,&quot;bodyPart&quot;:&quot;가슴&quot;,&quot;description&quot;:&quot;머신을 이용한 안정적인 가슴 운동입니다.&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;딥스&quot;,&quot;bodyPart&quot;:&quot;가슴&quot;,&quot;description&quot;:&quot;자신의 체중을 이용하여 가슴 하부와 삼두근을 발달시키는 운동입니다.&quot;},{&quot;id&quot;:7,&quot;name&quot;:&quot;데드리프트&quot;,&quot;bodyPart&quot;:&quot;등&quot;,&quot;description&quot;:&quot;등 전체와 하체, 코어를 동시에 발달시키는 복합 운동입니다.&quot;},{&quot;id&quot;:8,&quot;name&quot;:&quot;풀업&quot;,&quot;bodyPart&quot;:&quot;등&quot;,&quot;description&quot;:&quot;자신의 체중을 이용하여 광배근을 발달시키는 운동입니다.&quot;},{&quot;id&quot;:9,&quot;name&quot;:&quot;랫 풀다운&quot;,&quot;bodyPart&quot;:&quot;등&quot;,&quot;description&quot;:&quot;광배근의 넓이를 발달시키는 대표적인 등 운동입니다.&quot;},{&quot;id&quot;:10,&quot;name&quot;:&quot;바벨 로우&quot;,&quot;bodyPart&quot;:&quot;등&quot;,&quot;description&quot;:&quot;등 중앙부와 두께를 발달시키는 복합 운동입니다.&quot;},{&quot;id&quot;:11,&quot;name&quot;:&quot;덤벨 로우&quot;,&quot;bodyPart&quot;:&quot;등&quot;,&quot;description&quot;:&quot;한쪽씩 집중하여 등 근육을 발달시키는 운동입니다.&quot;},{&quot;id&quot;:12,&quot;name&quot;:&quot;시티드 로우&quot;,&quot;bodyPart&quot;:&quot;등&quot;,&quot;description&quot;:&quot;케이블 머신을 이용하여 등 중앙부를 발달시키는 운동입니다.&quot;},{&quot;id&quot;:13,&quot;name&quot;:&quot;티바 로우&quot;,&quot;bodyPart&quot;:&quot;등&quot;,&quot;description&quot;:&quot;상부 등과 승모근을 발달시키는 운동입니다.&quot;},{&quot;id&quot;:14,&quot;name&quot;:&quot;스쿼트&quot;,&quot;bodyPart&quot;:&quot;다리&quot;,&quot;description&quot;:&quot;하체 전체를 발달시키는 가장 기본적이고 효과적인 운동입니다.&quot;},{&quot;id&quot;:15,&quot;name&quot;:&quot;레그 프레스&quot;,&quot;bodyPart&quot;:&quot;다리&quot;,&quot;description&quot;:&quot;머신을 이용하여 하체 근육을 안전하게 발달시키는 운동입니다.&quot;},{&quot;id&quot;:16,&quot;name&quot;:&quot;레그 익스텐션&quot;,&quot;bodyPart&quot;:&quot;다리&quot;,&quot;description&quot;:&quot;대퇴사두근을 집중적으로 발달시키는 고립 운동입니다.&quot;},{&quot;id&quot;:17,&quot;name&quot;:&quot;레그 컬&quot;,&quot;bodyPart&quot;:&quot;다리&quot;,&quot;description&quot;:&quot;햄스트링을 집중적으로 발달시키는 고립 운동입니다.&quot;},{&quot;id&quot;:18,&quot;name&quot;:&quot;런지&quot;,&quot;bodyPart&quot;:&quot;다리&quot;,&quot;description&quot;:&quot;하체 전체와 균형감각을 발달시키는 운동입니다.&quot;},{&quot;id&quot;:19,&quot;name&quot;:&quot;불가리안 스플릿 스쿼트&quot;,&quot;bodyPart&quot;:&quot;다리&quot;,&quot;description&quot;:&quot;한쪽 다리씩 집중하여 하체를 발달시키는 운동입니다.&quot;},{&quot;id&quot;:20,&quot;name&quot;:&quot;카프 레이즈&quot;,&quot;bodyPart&quot;:&quot;다리&quot;,&quot;description&quot;:&quot;종아리 근육을 집중적으로 발달시키는 운동입니다.&quot;},{&quot;id&quot;:21,&quot;name&quot;:&quot;숄더 프레스&quot;,&quot;bodyPart&quot;:&quot;어깨&quot;,&quot;description&quot;:&quot;어깨 전체를 발달시키는 대표적인 운동입니다.&quot;},{&quot;id&quot;:22,&quot;name&quot;:&quot;덤벨 숄더 프레스&quot;,&quot;bodyPart&quot;:&quot;어깨&quot;,&quot;description&quot;:&quot;덤벨을 이용하여 어깨 근육의 가동 범위를 넓히는 운동입니다.&quot;},{&quot;id&quot;:23,&quot;name&quot;:&quot;사이드 레터럴 레이즈&quot;,&quot;bodyPart&quot;:&quot;어깨&quot;,&quot;description&quot;:&quot;측면 삼각근을 집중적으로 발달시키는 고립 운동입니다.&quot;},{&quot;id&quot;:24,&quot;name&quot;:&quot;프론트 레이즈&quot;,&quot;bodyPart&quot;:&quot;어깨&quot;,&quot;description&quot;:&quot;전면 삼각근을 집중적으로 발달시키는 고립 운동입니다.&quot;},{&quot;id&quot;:25,&quot;name&quot;:&quot;리어 델트 플라이&quot;,&quot;bodyPart&quot;:&quot;어깨&quot;,&quot;description&quot;:&quot;후면 삼각근을 집중적으로 발달시키는 고립 운동입니다.&quot;},{&quot;id&quot;:26,&quot;name&quot;:&quot;페이스 풀&quot;,&quot;bodyPart&quot;:&quot;어깨&quot;,&quot;description&quot;:&quot;후면 삼각근과 회전근개를 강화하는 운동입니다.&quot;},{&quot;id&quot;:27,&quot;name&quot;:&quot;업라이트 로우&quot;,&quot;bodyPart&quot;:&quot;어깨&quot;,&quot;description&quot;:&quot;측면 삼각근과 승모근을 발달시키는 운동입니다.&quot;},{&quot;id&quot;:28,&quot;name&quot;:&quot;바벨 컬&quot;,&quot;bodyPart&quot;:&quot;팔&quot;,&quot;description&quot;:&quot;이두근을 발달시키는 가장 기본적인 운동입니다.&quot;},{&quot;id&quot;:29,&quot;name&quot;:&quot;덤벨 컬&quot;,&quot;bodyPart&quot;:&quot;팔&quot;,&quot;description&quot;:&quot;덤벨을 이용하여 이두근을 발달시키는 운동입니다.&quot;},{&quot;id&quot;:30,&quot;name&quot;:&quot;해머 컬&quot;,&quot;bodyPart&quot;:&quot;팔&quot;,&quot;description&quot;:&quot;이두근과 상완근을 동시에 발달시키는 운동입니다.&quot;},{&quot;id&quot;:31,&quot;name&quot;:&quot;프리처 컬&quot;,&quot;bodyPart&quot;:&quot;팔&quot;,&quot;description&quot;:&quot;이두근의 하부를 집중적으로 발달시키는 운동입니다.&quot;},{&quot;id&quot;:32,&quot;name&quot;:&quot;케이블 컬&quot;,&quot;bodyPart&quot;:&quot;팔&quot;,&quot;description&quot;:&quot;케이블을 이용하여 이두근에 지속적인 긴장을 주는 운동입니다.&quot;},{&quot;id&quot;:33,&quot;name&quot;:&quot;트라이셉스 푸시다운&quot;,&quot;bodyPart&quot;:&quot;팔&quot;,&quot;description&quot;:&quot;케이블을 이용하여 삼두근을 발달시키는 운동입니다.&quot;},{&quot;id&quot;:34,&quot;name&quot;:&quot;오버헤드 트라이셉스 익스텐션&quot;,&quot;bodyPart&quot;:&quot;팔&quot;,&quot;description&quot;:&quot;삼두근의 장두를 집중적으로 발달시키는 운동입니다.&quot;},{&quot;id&quot;:35,&quot;name&quot;:&quot;스컬 크러셔&quot;,&quot;bodyPart&quot;:&quot;팔&quot;,&quot;description&quot;:&quot;바벨이나 덤벨을 이용하여 삼두근을 발달시키는 운동입니다.&quot;},{&quot;id&quot;:36,&quot;name&quot;:&quot;클로즈 그립 벤치 프레스&quot;,&quot;bodyPart&quot;:&quot;팔&quot;,&quot;description&quot;:&quot;삼두근을 집중적으로 발달시키는 복합 운동입니다.&quot;},{&quot;id&quot;:37,&quot;name&quot;:&quot;크런치&quot;,&quot;bodyPart&quot;:&quot;복근&quot;,&quot;description&quot;:&quot;복직근 상부를 발달시키는 기본적인 운동입니다.&quot;},{&quot;id&quot;:38,&quot;name&quot;:&quot;레그 레이즈&quot;,&quot;bodyPart&quot;:&quot;복근&quot;,&quot;description&quot;:&quot;복직근 하부를 집중적으로 발달시키는 운동입니다.&quot;},{&quot;id&quot;:39,&quot;name&quot;:&quot;플랭크&quot;,&quot;bodyPart&quot;:&quot;복근&quot;,&quot;description&quot;:&quot;코어 전체를 안정화하고 강화하는 정적 운동입니다.&quot;},{&quot;id&quot;:40,&quot;name&quot;:&quot;러시안 트위스트&quot;,&quot;bodyPart&quot;:&quot;복근&quot;,&quot;description&quot;:&quot;복사근을 발달시키고 회전력을 강화하는 운동입니다.&quot;},{&quot;id&quot;:41,&quot;name&quot;:&quot;행잉 레그 레이즈&quot;,&quot;bodyPart&quot;:&quot;복근&quot;,&quot;description&quot;:&quot;복직근 전체를 강하게 자극하는 고급 운동입니다.&quot;},{&quot;id&quot;:42,&quot;name&quot;:&quot;사이드 플랭크&quot;,&quot;bodyPart&quot;:&quot;복근&quot;,&quot;description&quot;:&quot;복사근과 코어 측면을 강화하는 운동입니다.&quot;},{&quot;id&quot;:43,&quot;name&quot;:&quot;마운틴 클라이머&quot;,&quot;bodyPart&quot;:&quot;복근&quot;,&quot;description&quot;:&quot;복근과 심폐 지구력을 동시에 발달시키는 운동입니다.&quot;},{&quot;id&quot;:44,&quot;name&quot;:&quot;바이시클 크런치&quot;,&quot;bodyPart&quot;:&quot;복근&quot;,&quot;description&quot;:&quot;복직근과 복사근을 동시에 자극하는 운동입니다.&quot;}]}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2025-12-12 19:17:04.747 [Test worker] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-12 19:17:04.747 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2025-12-12 19:17:04.748 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms
+2025-12-12 19:17:04.750 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u.id id 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id 
+        from
+            users u1_0 
+        where
+            u1_0.email=? 
+        fetch
+            first ? rows only
+2025-12-12 19:17:04.826 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.User
+        */insert 
+    into
+        users (created_at, email, name, password, id) 
+    values
+        (?, ?, ?, ?, default)
+2025-12-12 19:17:04.832 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:04.835 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        e 
+    FROM
+        ExerciseType e 
+    WHERE
+        e.bodyPart = :bodyPart */ select
+            et1_0.id,
+            et1_0.body_part,
+            et1_0.description,
+            et1_0.name 
+        from
+            exercise_types et1_0 
+        where
+            et1_0.body_part=?
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/exercises
+       Parameters = {bodyPart=[복근]}
+          Headers = [Content-Type:&quot;application/json&quot;, Authorization:&quot;Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0XzE3NjU1MzQ2MjQ3NDhAdGVzdC5jb20iLCJpYXQiOjE3NjU1MzQ2MjQsImV4cCI6MTc2NTYyMTAyNH0.LWwjoZClkpTQLGozRXdC8yDie2ZH-RnQS02QQWQjD8nWUqP-n74OeqBwL7zVT4Zy&quot;]
+             Body = &lt;no character encoding set&gt;
+    Session Attrs = {}
+
+Handler:
+             Type = com.example.FitTracker.controller.ExerciseTypeController
+           Method = com.example.FitTracker.controller.ExerciseTypeController#getAllExercises(String)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:&quot;application/json&quot;, X-Content-Type-Options:&quot;nosniff&quot;, X-XSS-Protection:&quot;0&quot;, Cache-Control:&quot;no-cache, no-store, max-age=0, must-revalidate&quot;, Pragma:&quot;no-cache&quot;, Expires:&quot;0&quot;, X-Frame-Options:&quot;DENY&quot;]
+     Content type = application/json
+             Body = {&quot;success&quot;:true,&quot;message&quot;:&quot;성공&quot;,&quot;data&quot;:[{&quot;id&quot;:37,&quot;name&quot;:&quot;크런치&quot;,&quot;bodyPart&quot;:&quot;복근&quot;,&quot;description&quot;:&quot;복직근 상부를 발달시키는 기본적인 운동입니다.&quot;},{&quot;id&quot;:38,&quot;name&quot;:&quot;레그 레이즈&quot;,&quot;bodyPart&quot;:&quot;복근&quot;,&quot;description&quot;:&quot;복직근 하부를 집중적으로 발달시키는 운동입니다.&quot;},{&quot;id&quot;:39,&quot;name&quot;:&quot;플랭크&quot;,&quot;bodyPart&quot;:&quot;복근&quot;,&quot;description&quot;:&quot;코어 전체를 안정화하고 강화하는 정적 운동입니다.&quot;},{&quot;id&quot;:40,&quot;name&quot;:&quot;러시안 트위스트&quot;,&quot;bodyPart&quot;:&quot;복근&quot;,&quot;description&quot;:&quot;복사근을 발달시키고 회전력을 강화하는 운동입니다.&quot;},{&quot;id&quot;:41,&quot;name&quot;:&quot;행잉 레그 레이즈&quot;,&quot;bodyPart&quot;:&quot;복근&quot;,&quot;description&quot;:&quot;복직근 전체를 강하게 자극하는 고급 운동입니다.&quot;},{&quot;id&quot;:42,&quot;name&quot;:&quot;사이드 플랭크&quot;,&quot;bodyPart&quot;:&quot;복근&quot;,&quot;description&quot;:&quot;복사근과 코어 측면을 강화하는 운동입니다.&quot;},{&quot;id&quot;:43,&quot;name&quot;:&quot;마운틴 클라이머&quot;,&quot;bodyPart&quot;:&quot;복근&quot;,&quot;description&quot;:&quot;복근과 심폐 지구력을 동시에 발달시키는 운동입니다.&quot;},{&quot;id&quot;:44,&quot;name&quot;:&quot;바이시클 크런치&quot;,&quot;bodyPart&quot;:&quot;복근&quot;,&quot;description&quot;:&quot;복직근과 복사근을 동시에 자극하는 운동입니다.&quot;}]}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2025-12-12 19:17:04.843 [Test worker] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-12 19:17:04.843 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2025-12-12 19:17:04.843 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 0 ms
+2025-12-12 19:17:04.845 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u.id id 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id 
+        from
+            users u1_0 
+        where
+            u1_0.email=? 
+        fetch
+            first ? rows only
+2025-12-12 19:17:04.922 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.User
+        */insert 
+    into
+        users (created_at, email, name, password, id) 
+    values
+        (?, ?, ?, ?, default)
+2025-12-12 19:17:04.927 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:04.930 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        e 
+    FROM
+        ExerciseType e 
+    WHERE
+        e.bodyPart = :bodyPart */ select
+            et1_0.id,
+            et1_0.body_part,
+            et1_0.description,
+            et1_0.name 
+        from
+            exercise_types et1_0 
+        where
+            et1_0.body_part=?
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/exercises
+       Parameters = {bodyPart=[존재하지않음]}
+          Headers = [Content-Type:&quot;application/json&quot;, Authorization:&quot;Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0XzE3NjU1MzQ2MjQ4NDNAdGVzdC5jb20iLCJpYXQiOjE3NjU1MzQ2MjQsImV4cCI6MTc2NTYyMTAyNH0.LZBjVgIZIgfJexSLe9c19FAaLGVe81SY3pCCVCDOaK5hbjFbA7Ad-91KZWIRkoKj&quot;]
+             Body = &lt;no character encoding set&gt;
+    Session Attrs = {}
+
+Handler:
+             Type = com.example.FitTracker.controller.ExerciseTypeController
+           Method = com.example.FitTracker.controller.ExerciseTypeController#getAllExercises(String)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:&quot;application/json&quot;, X-Content-Type-Options:&quot;nosniff&quot;, X-XSS-Protection:&quot;0&quot;, Cache-Control:&quot;no-cache, no-store, max-age=0, must-revalidate&quot;, Pragma:&quot;no-cache&quot;, Expires:&quot;0&quot;, X-Frame-Options:&quot;DENY&quot;]
+     Content type = application/json
+             Body = {&quot;success&quot;:true,&quot;message&quot;:&quot;성공&quot;,&quot;data&quot;:[]}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2025-12-12 19:17:04.938 [Test worker] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-12 19:17:04.938 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2025-12-12 19:17:04.939 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms
+2025-12-12 19:17:04.941 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u.id id 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id 
+        from
+            users u1_0 
+        where
+            u1_0.email=? 
+        fetch
+            first ? rows only
+2025-12-12 19:17:05.014 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.User
+        */insert 
+    into
+        users (created_at, email, name, password, id) 
+    values
+        (?, ?, ?, ?, default)
+2025-12-12 19:17:05.019 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:05.021 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        e 
+    FROM
+        ExerciseType e 
+    WHERE
+        e.bodyPart = :bodyPart */ select
+            et1_0.id,
+            et1_0.body_part,
+            et1_0.description,
+            et1_0.name 
+        from
+            exercise_types et1_0 
+        where
+            et1_0.body_part=?
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/exercises
+       Parameters = {bodyPart=[가슴]}
+          Headers = [Content-Type:&quot;application/json&quot;, Authorization:&quot;Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0XzE3NjU1MzQ2MjQ5MzlAdGVzdC5jb20iLCJpYXQiOjE3NjU1MzQ2MjUsImV4cCI6MTc2NTYyMTAyNX0.7uizcdx5SdY9KHaEbhA3LzttaGKPkrws9It4TfprIb_yfiruNUOyGf18inHOP42T&quot;]
+             Body = &lt;no character encoding set&gt;
+    Session Attrs = {}
+
+Handler:
+             Type = com.example.FitTracker.controller.ExerciseTypeController
+           Method = com.example.FitTracker.controller.ExerciseTypeController#getAllExercises(String)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:&quot;application/json&quot;, X-Content-Type-Options:&quot;nosniff&quot;, X-XSS-Protection:&quot;0&quot;, Cache-Control:&quot;no-cache, no-store, max-age=0, must-revalidate&quot;, Pragma:&quot;no-cache&quot;, Expires:&quot;0&quot;, X-Frame-Options:&quot;DENY&quot;]
+     Content type = application/json
+             Body = {&quot;success&quot;:true,&quot;message&quot;:&quot;성공&quot;,&quot;data&quot;:[{&quot;id&quot;:1,&quot;name&quot;:&quot;벤치 프레스&quot;,&quot;bodyPart&quot;:&quot;가슴&quot;,&quot;description&quot;:&quot;바벨을 사용하여 가슴 전체를 발달시키는 대표적인 운동입니다.&quot;},{&quot;id&quot;:2,&quot;name&quot;:&quot;인클라인 벤치 프레스&quot;,&quot;bodyPart&quot;:&quot;가슴&quot;,&quot;description&quot;:&quot;상부 가슴 발달에 효과적인 벤치 프레스 변형 운동입니다.&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;덤벨 프레스&quot;,&quot;bodyPart&quot;:&quot;가슴&quot;,&quot;description&quot;:&quot;덤벨을 사용하여 가슴 근육의 가동 범위를 넓히는 운동입니다.&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;덤벨 플라이&quot;,&quot;bodyPart&quot;:&quot;가슴&quot;,&quot;description&quot;:&quot;가슴 근육의 스트레칭과 수축을 강조하는 고립 운동입니다.&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;체스트 프레스 머신&quot;,&quot;bodyPart&quot;:&quot;가슴&quot;,&quot;description&quot;:&quot;머신을 이용한 안정적인 가슴 운동입니다.&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;딥스&quot;,&quot;bodyPart&quot;:&quot;가슴&quot;,&quot;description&quot;:&quot;자신의 체중을 이용하여 가슴 하부와 삼두근을 발달시키는 운동입니다.&quot;}]}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+</pre>
+<button class="clipboard-copy-btn" aria-label="Copy to clipboard" data-copy-element-id="class-stdout">Copy</button>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="https://www.gradle.org">Gradle 9.2.1</a> at 2025. 12. 12. 오후 7:17:12</p>
+</div>
+</div>
+</body>
+</html>

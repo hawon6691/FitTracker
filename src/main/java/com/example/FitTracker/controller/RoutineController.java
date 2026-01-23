@@ -1,0 +1,80 @@
+package com.example.FitTracker.controller;
+
+import com.example.FitTracker.dto.request.routine.CreateRoutineRequest;
+import com.example.FitTracker.dto.request.routine.UpdateRoutineRequest;
+import com.example.FitTracker.dto.response.ApiResponse;
+import com.example.FitTracker.dto.response.routine.RoutineResponse;
+import com.example.FitTracker.security.SecurityUtil;
+import com.example.FitTracker.service.RoutineService;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/routines")
+@RequiredArgsConstructor
+@Tag(name = "운동 루틴", description = "운동 루틴 관리 API")
+public class RoutineController {
+
+    private final RoutineService routineService;
+    private final SecurityUtil securityUtil;
+
+    @PostMapping
+    @Operation(summary = "루틴 생성", description = "새로운 운동 루틴을 생성합니다")
+    public ResponseEntity<ApiResponse<RoutineResponse>> createRoutine(
+            @Valid @RequestBody CreateRoutineRequest request) {
+        RoutineResponse response = routineService.createRoutine(securityUtil.getCurrentUserId(), request);
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(ApiResponse.success("루틴 생성 완료", response));
+    }
+
+    @GetMapping
+    @Operation(summary = "루틴 목록 조회", description = "사용자의 모든 루틴을 조회합니다")
+    public ResponseEntity<ApiResponse<List<RoutineResponse>>> getUserRoutines() {
+        List<RoutineResponse> routines = routineService.getUserRoutines(securityUtil.getCurrentUserId());
+        return ResponseEntity.ok(ApiResponse.success(routines));
+    }
+
+    @GetMapping("/{id}")
+    @Operation(summary = "루틴 상세 조회", description = "특정 루틴의 상세 정보를 조회합니다")
+    public ResponseEntity<ApiResponse<RoutineResponse>> getRoutineById(@PathVariable Long id) {
+        RoutineResponse routine = routineService.getRoutineById(securityUtil.getCurrentUserId(), id);
+        return ResponseEntity.ok(ApiResponse.success(routine));
+    }
+
+    @PutMapping("/{id}")
+    @Operation(summary = "루틴 수정", description = "루틴 정보를 수정합니다")
+    public ResponseEntity<ApiResponse<RoutineResponse>> updateRoutine(
+            @PathVariable Long id,
+            @Valid @RequestBody UpdateRoutineRequest request) {
+        RoutineResponse response = routineService.updateRoutine(securityUtil.getCurrentUserId(), id, request);
+        return ResponseEntity.ok(ApiResponse.success("루틴 수정 완료", response));
+    }
+
+    @DeleteMapping("/{id}")
+    @Operation(summary = "루틴 삭제", description = "루틴을 삭제합니다")
+    public ResponseEntity<ApiResponse<Void>> deleteRoutine(@PathVariable Long id) {
+        routineService.deleteRoutine(securityUtil.getCurrentUserId(), id);
+        return ResponseEntity.ok(ApiResponse.success("루틴 삭제 완료", null));
+    }
+
+    // RoutineController에 추가
+    @PostMapping("/{id}/copy")
+    @Operation(summary = "루틴 복사", description = "기존 루틴을 복사하여 새 루틴을 생성합니다")
+    public ResponseEntity<ApiResponse<RoutineResponse>> copyRoutine(
+            @PathVariable Long id,
+            @RequestParam(required = false) String newName) {
+        RoutineResponse response = routineService.copyRoutine(
+                securityUtil.getCurrentUserId(), id, newName);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(ApiResponse.success("루틴 복사 완료", response));
+    }
+}

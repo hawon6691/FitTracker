@@ -1,0 +1,1955 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="운동 기록 API 통합 테스트" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-12-12T10:17:09.065Z" hostname="SEOHAWON" time="1.017">
+  <properties/>
+  <testcase name="세트 추가 성공" classname="com.example.FitTracker.integration.WorkoutIntegrationTest" time="0.096"/>
+  <testcase name="운동 세션 생성 실패 - 필수 필드 누락" classname="com.example.FitTracker.integration.WorkoutIntegrationTest" time="0.093"/>
+  <testcase name="세트 추가 실패 - 존재하지 않는 세션" classname="com.example.FitTracker.integration.WorkoutIntegrationTest" time="0.103"/>
+  <testcase name="운동 기록 전체 조회" classname="com.example.FitTracker.integration.WorkoutIntegrationTest" time="0.125"/>
+  <testcase name="세트 추가 실패 - 존재하지 않는 운동 종목" classname="com.example.FitTracker.integration.WorkoutIntegrationTest" time="0.107"/>
+  <testcase name="운동 세션 삭제 성공" classname="com.example.FitTracker.integration.WorkoutIntegrationTest" time="0.102"/>
+  <testcase name="운동 세션 생성 성공 - 루틴 없이" classname="com.example.FitTracker.integration.WorkoutIntegrationTest" time="0.089"/>
+  <testcase name="기간별 운동 기록 조회" classname="com.example.FitTracker.integration.WorkoutIntegrationTest" time="0.098"/>
+  <testcase name="완전한 운동 기록 플로우 테스트" classname="com.example.FitTracker.integration.WorkoutIntegrationTest" time="0.106"/>
+  <testcase name="운동 세션 상세 조회" classname="com.example.FitTracker.integration.WorkoutIntegrationTest" time="0.092"/>
+  <system-out><![CDATA[2025-12-12 19:17:09.059 [Test worker] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.FitTracker.integration.WorkoutIntegrationTest]: WorkoutIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-12-12 19:17:09.061 [Test worker] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.FitTracker.FitTrackerApplication for test class com.example.FitTracker.integration.WorkoutIntegrationTest
+2025-12-12 19:17:09.067 [Test worker] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-12 19:17:09.068 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2025-12-12 19:17:09.068 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 0 ms
+2025-12-12 19:17:09.070 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u.id id 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id 
+        from
+            users u1_0 
+        where
+            u1_0.email=? 
+        fetch
+            first ? rows only
+2025-12-12 19:17:09.145 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.User
+        */insert 
+    into
+        users (created_at, email, name, password, id) 
+    values
+        (?, ?, ?, ?, default)
+2025-12-12 19:17:09.149 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.151 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.151 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.WorkoutSession
+        */insert 
+    into
+        workout_sessions (created_at, duration_minutes, notes, routine_id, user_id, workout_date, id) 
+    values
+        (?, ?, ?, ?, ?, ?, default)
+2025-12-12 19:17:09.154 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.155 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.156 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        w 
+    FROM
+        WorkoutSession w 
+    WHERE
+        w.id = :id 
+        AND w.user.id = :userId */ select
+            ws1_0.id,
+            ws1_0.created_at,
+            ws1_0.duration_minutes,
+            ws1_0.notes,
+            ws1_0.routine_id,
+            ws1_0.user_id,
+            ws1_0.workout_date 
+        from
+            workout_sessions ws1_0 
+        where
+            ws1_0.id=? 
+            and ws1_0.user_id=?
+2025-12-12 19:17:09.156 [Test worker] DEBUG org.hibernate.SQL - 
+    select
+        et1_0.id,
+        et1_0.body_part,
+        et1_0.description,
+        et1_0.name 
+    from
+        exercise_types et1_0 
+    where
+        et1_0.id=?
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/workouts/77/sets
+       Parameters = {}
+          Headers = [Content-Type:"application/json", Authorization:"Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0XzE3NjU1MzQ2MjkwNjhAdGVzdC5jb20iLCJpYXQiOjE3NjU1MzQ2MjksImV4cCI6MTc2NTYyMTAyOX0.amcowAAmIYUqG4wWB-1ST6YwZXd0RmvxSj2yMi9boFGx4anf6vbFAh0IRo_D2QJV", Content-Length:"75"]
+             Body = <no character encoding set>
+    Session Attrs = {}
+
+Handler:
+             Type = com.example.FitTracker.controller.WorkoutController
+           Method = com.example.FitTracker.controller.WorkoutController#addWorkoutSet(Long, AddWorkoutSetRequest)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = application/json
+             Body = {"success":true,"message":"세트 추가 완료","data":{"id":77,"routineId":null,"routineName":null,"workoutDate":"2025-12-12","durationMinutes":60,"notes":"테스트 세션","createdAt":"2025-12-12T19:17:09.151658","sets":[{"id":null,"exerciseTypeId":1,"exerciseName":"벤치 프레스","bodyPart":"가슴","setNumber":1,"reps":10,"weight":80.0,"completed":true}]}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2025-12-12 19:17:09.163 [Test worker] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-12 19:17:09.163 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2025-12-12 19:17:09.164 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms
+2025-12-12 19:17:09.165 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u.id id 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id 
+        from
+            users u1_0 
+        where
+            u1_0.email=? 
+        fetch
+            first ? rows only
+2025-12-12 19:17:09.245 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.User
+        */insert 
+    into
+        users (created_at, email, name, password, id) 
+    values
+        (?, ?, ?, ?, default)
+2025-12-12 19:17:09.248 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/workouts
+       Parameters = {}
+          Headers = [Content-Type:"application/json", Authorization:"Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0XzE3NjU1MzQ2MjkxNjRAdGVzdC5jb20iLCJpYXQiOjE3NjU1MzQ2MjksImV4cCI6MTc2NTYyMTAyOX0.b4wnSfZa_6VLA72TfJQHEzYSA6dXw-kD68r6oNZ4afEqUWdaw8PzMBq5BA15XrJG", Content-Length:"39"]
+             Body = <no character encoding set>
+    Session Attrs = {}
+
+Handler:
+             Type = com.example.FitTracker.controller.WorkoutController
+           Method = com.example.FitTracker.controller.WorkoutController#createWorkoutSession(CreateWorkoutSessionRequest)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = org.springframework.web.bind.MethodArgumentNotValidException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 400
+    Error message = null
+          Headers = [Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = application/json
+             Body = {"timestamp":"2025-12-12T19:17:09.2521661","status":400,"error":"VALIDATION_FAILED","message":"입력값 검증 실패","path":"/api/workouts","validationErrors":{"workoutDate":"운동 날짜는 필수입니다"}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2025-12-12 19:17:09.258 [Test worker] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-12 19:17:09.258 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2025-12-12 19:17:09.261 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 3 ms
+2025-12-12 19:17:09.263 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u.id id 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id 
+        from
+            users u1_0 
+        where
+            u1_0.email=? 
+        fetch
+            first ? rows only
+2025-12-12 19:17:09.347 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.User
+        */insert 
+    into
+        users (created_at, email, name, password, id) 
+    values
+        (?, ?, ?, ?, default)
+2025-12-12 19:17:09.351 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.353 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.353 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        w 
+    FROM
+        WorkoutSession w 
+    WHERE
+        w.id = :id 
+        AND w.user.id = :userId */ select
+            ws1_0.id,
+            ws1_0.created_at,
+            ws1_0.duration_minutes,
+            ws1_0.notes,
+            ws1_0.routine_id,
+            ws1_0.user_id,
+            ws1_0.workout_date 
+        from
+            workout_sessions ws1_0 
+        where
+            ws1_0.id=? 
+            and ws1_0.user_id=?
+2025-12-12 19:17:09.354 [Test worker] WARN  c.e.F.e.GlobalExceptionHandler - 잘못된 인자: 운동 세션을 찾을 수 없습니다: 999999
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/workouts/999999/sets
+       Parameters = {}
+          Headers = [Content-Type:"application/json", Authorization:"Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0XzE3NjU1MzQ2MjkyNjFAdGVzdC5jb20iLCJpYXQiOjE3NjU1MzQ2MjksImV4cCI6MTc2NTYyMTAyOX0.9q8lFqhjNi4-zWtWLR36bCCrK7XMaYhVSzVUiFhhlqRh4JhnverRJI2mFXdpp514", Content-Length:"75"]
+             Body = <no character encoding set>
+    Session Attrs = {}
+
+Handler:
+             Type = com.example.FitTracker.controller.WorkoutController
+           Method = com.example.FitTracker.controller.WorkoutController#addWorkoutSet(Long, AddWorkoutSetRequest)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = java.lang.IllegalArgumentException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 400
+    Error message = null
+          Headers = [Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = application/json
+             Body = {"timestamp":"2025-12-12T19:17:09.3557651","status":400,"error":"INVALID_ARGUMENT","message":"운동 세션을 찾을 수 없습니다: 999999","path":"/api/workouts/999999/sets","validationErrors":null}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2025-12-12 19:17:09.363 [Test worker] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-12 19:17:09.363 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2025-12-12 19:17:09.364 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms
+2025-12-12 19:17:09.367 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u.id id 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id 
+        from
+            users u1_0 
+        where
+            u1_0.email=? 
+        fetch
+            first ? rows only
+2025-12-12 19:17:09.453 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.User
+        */insert 
+    into
+        users (created_at, email, name, password, id) 
+    values
+        (?, ?, ?, ?, default)
+2025-12-12 19:17:09.457 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.459 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.460 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.WorkoutSession
+        */insert 
+    into
+        workout_sessions (created_at, duration_minutes, notes, routine_id, user_id, workout_date, id) 
+    values
+        (?, ?, ?, ?, ?, ?, default)
+2025-12-12 19:17:09.464 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.466 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.467 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.WorkoutSession
+        */insert 
+    into
+        workout_sessions (created_at, duration_minutes, notes, routine_id, user_id, workout_date, id) 
+    values
+        (?, ?, ?, ?, ?, ?, default)
+2025-12-12 19:17:09.470 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.473 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.479 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        w 
+    FROM
+        WorkoutSession w 
+    WHERE
+        w.user.id = :userId 
+    ORDER BY
+        w.workoutDate desc */ select
+            ws1_0.id,
+            ws1_0.created_at,
+            ws1_0.duration_minutes,
+            ws1_0.notes,
+            ws1_0.routine_id,
+            ws1_0.user_id,
+            ws1_0.workout_date 
+        from
+            workout_sessions ws1_0 
+        where
+            ws1_0.user_id=? 
+        order by
+            ws1_0.workout_date desc
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/workouts
+       Parameters = {}
+          Headers = [Content-Type:"application/json", Authorization:"Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0XzE3NjU1MzQ2MjkzNjRAdGVzdC5jb20iLCJpYXQiOjE3NjU1MzQ2MjksImV4cCI6MTc2NTYyMTAyOX0.6jdZauz93p55Kw-FUPvxiZFsWq1gVCMQdcxPnMS5vVNy7IrorrKSxxdaR8IxEdFv"]
+             Body = <no character encoding set>
+    Session Attrs = {}
+
+Handler:
+             Type = com.example.FitTracker.controller.WorkoutController
+           Method = com.example.FitTracker.controller.WorkoutController#getWorkouts(LocalDate, LocalDate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = application/json
+             Body = {"success":true,"message":"성공","data":[{"id":78,"routineId":null,"routineName":null,"workoutDate":"2025-12-12","durationMinutes":60,"notes":"테스트 세션","createdAt":"2025-12-12T19:17:09.460964","sets":[]},{"id":79,"routineId":null,"routineName":null,"workoutDate":"2025-12-12","durationMinutes":60,"notes":"테스트 세션","createdAt":"2025-12-12T19:17:09.467963","sets":[]}]}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2025-12-12 19:17:09.488 [Test worker] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-12 19:17:09.488 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2025-12-12 19:17:09.489 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms
+2025-12-12 19:17:09.490 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u.id id 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id 
+        from
+            users u1_0 
+        where
+            u1_0.email=? 
+        fetch
+            first ? rows only
+2025-12-12 19:17:09.573 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.User
+        */insert 
+    into
+        users (created_at, email, name, password, id) 
+    values
+        (?, ?, ?, ?, default)
+2025-12-12 19:17:09.576 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.578 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.579 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.WorkoutSession
+        */insert 
+    into
+        workout_sessions (created_at, duration_minutes, notes, routine_id, user_id, workout_date, id) 
+    values
+        (?, ?, ?, ?, ?, ?, default)
+2025-12-12 19:17:09.582 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.583 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.584 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        w 
+    FROM
+        WorkoutSession w 
+    WHERE
+        w.id = :id 
+        AND w.user.id = :userId */ select
+            ws1_0.id,
+            ws1_0.created_at,
+            ws1_0.duration_minutes,
+            ws1_0.notes,
+            ws1_0.routine_id,
+            ws1_0.user_id,
+            ws1_0.workout_date 
+        from
+            workout_sessions ws1_0 
+        where
+            ws1_0.id=? 
+            and ws1_0.user_id=?
+2025-12-12 19:17:09.585 [Test worker] DEBUG org.hibernate.SQL - 
+    select
+        et1_0.id,
+        et1_0.body_part,
+        et1_0.description,
+        et1_0.name 
+    from
+        exercise_types et1_0 
+    where
+        et1_0.id=?
+2025-12-12 19:17:09.585 [Test worker] WARN  c.e.F.e.GlobalExceptionHandler - 잘못된 인자: 운동 종목을 찾을 수 없습니다: 999999
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/workouts/80/sets
+       Parameters = {}
+          Headers = [Content-Type:"application/json", Authorization:"Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0XzE3NjU1MzQ2Mjk0ODlAdGVzdC5jb20iLCJpYXQiOjE3NjU1MzQ2MjksImV4cCI6MTc2NTYyMTAyOX0.ahzDaydmgNOst6PsnCfEjvqXuYQH-KmwNu2g1RAKjZSm-yZDa60wxFSuw0wnIj8t", Content-Length:"80"]
+             Body = <no character encoding set>
+    Session Attrs = {}
+
+Handler:
+             Type = com.example.FitTracker.controller.WorkoutController
+           Method = com.example.FitTracker.controller.WorkoutController#addWorkoutSet(Long, AddWorkoutSetRequest)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = java.lang.IllegalArgumentException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 400
+    Error message = null
+          Headers = [Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = application/json
+             Body = {"timestamp":"2025-12-12T19:17:09.5851463","status":400,"error":"INVALID_ARGUMENT","message":"운동 종목을 찾을 수 없습니다: 999999","path":"/api/workouts/80/sets","validationErrors":null}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2025-12-12 19:17:09.594 [Test worker] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-12 19:17:09.594 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2025-12-12 19:17:09.595 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms
+2025-12-12 19:17:09.597 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u.id id 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id 
+        from
+            users u1_0 
+        where
+            u1_0.email=? 
+        fetch
+            first ? rows only
+2025-12-12 19:17:09.676 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.User
+        */insert 
+    into
+        users (created_at, email, name, password, id) 
+    values
+        (?, ?, ?, ?, default)
+2025-12-12 19:17:09.679 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.680 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.681 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.WorkoutSession
+        */insert 
+    into
+        workout_sessions (created_at, duration_minutes, notes, routine_id, user_id, workout_date, id) 
+    values
+        (?, ?, ?, ?, ?, ?, default)
+2025-12-12 19:17:09.683 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.684 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.685 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        w 
+    FROM
+        WorkoutSession w 
+    WHERE
+        w.id = :id 
+        AND w.user.id = :userId */ select
+            ws1_0.id,
+            ws1_0.created_at,
+            ws1_0.duration_minutes,
+            ws1_0.notes,
+            ws1_0.routine_id,
+            ws1_0.user_id,
+            ws1_0.workout_date 
+        from
+            workout_sessions ws1_0 
+        where
+            ws1_0.id=? 
+            and ws1_0.user_id=?
+
+MockHttpServletRequest:
+      HTTP Method = DELETE
+      Request URI = /api/workouts/81
+       Parameters = {}
+          Headers = [Content-Type:"application/json", Authorization:"Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0XzE3NjU1MzQ2Mjk1OTVAdGVzdC5jb20iLCJpYXQiOjE3NjU1MzQ2MjksImV4cCI6MTc2NTYyMTAyOX0.uWoRlHRjMLdD0T9dIQrq7yGCJ-83uLwmCFujFx2BqZ_7yNIi-AKhOR400WryDQjY"]
+             Body = <no character encoding set>
+    Session Attrs = {}
+
+Handler:
+             Type = com.example.FitTracker.controller.WorkoutController
+           Method = com.example.FitTracker.controller.WorkoutController#deleteWorkoutSession(Long)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = application/json
+             Body = {"success":true,"message":"운동 세션 삭제 완료","data":null}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2025-12-12 19:17:09.689 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.690 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.691 [Test worker] DEBUG org.hibernate.SQL - 
+    /* delete 
+    for
+        com.example.FitTracker.domain.WorkoutSession */delete 
+    from
+        workout_sessions 
+    where
+        id=?
+2025-12-12 19:17:09.691 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        ws 
+    FROM
+        WorkoutSession ws 
+    LEFT JOIN
+        
+    FETCH
+        ws.workoutSets wset 
+    LEFT JOIN
+        
+    FETCH
+        wset.exerciseType 
+    WHERE
+        ws.id = :sessionId 
+        AND ws.user.id = :userId */ select
+            ws1_0.id,
+            ws1_0.created_at,
+            ws1_0.duration_minutes,
+            ws1_0.notes,
+            ws1_0.routine_id,
+            ws1_0.user_id,
+            ws1_0.workout_date,
+            ws2_0.workout_session_id,
+            ws2_0.id,
+            ws2_0.completed,
+            ws2_0.exercise_type_id,
+            et1_0.id,
+            et1_0.body_part,
+            et1_0.description,
+            et1_0.name,
+            ws2_0.reps,
+            ws2_0.set_number,
+            ws2_0.weight 
+        from
+            workout_sessions ws1_0 
+        left join
+            workout_sets ws2_0 
+                on ws1_0.id=ws2_0.workout_session_id 
+        left join
+            exercise_types et1_0 
+                on et1_0.id=ws2_0.exercise_type_id 
+        where
+            ws1_0.id=? 
+            and ws1_0.user_id=?
+2025-12-12 19:17:09.692 [Test worker] WARN  c.e.F.e.GlobalExceptionHandler - 잘못된 인자: 운동 세션을 찾을 수 없습니다: 81
+2025-12-12 19:17:09.696 [Test worker] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-12 19:17:09.696 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2025-12-12 19:17:09.697 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms
+2025-12-12 19:17:09.698 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u.id id 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id 
+        from
+            users u1_0 
+        where
+            u1_0.email=? 
+        fetch
+            first ? rows only
+2025-12-12 19:17:09.773 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.User
+        */insert 
+    into
+        users (created_at, email, name, password, id) 
+    values
+        (?, ?, ?, ?, default)
+2025-12-12 19:17:09.777 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.778 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.779 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.WorkoutSession
+        */insert 
+    into
+        workout_sessions (created_at, duration_minutes, notes, routine_id, user_id, workout_date, id) 
+    values
+        (?, ?, ?, ?, ?, ?, default)
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/workouts
+       Parameters = {}
+          Headers = [Content-Type:"application/json", Authorization:"Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0XzE3NjU1MzQ2Mjk2OTdAdGVzdC5jb20iLCJpYXQiOjE3NjU1MzQ2MjksImV4cCI6MTc2NTYyMTAyOX0.R12TSVOGZR0I_ColJ0qNJdTlTNkuWLAjDOX9tOntl_e9hJVDSeJN0xNIHrdr-p21", Content-Length:"97"]
+             Body = <no character encoding set>
+    Session Attrs = {}
+
+Handler:
+             Type = com.example.FitTracker.controller.WorkoutController
+           Method = com.example.FitTracker.controller.WorkoutController#createWorkoutSession(CreateWorkoutSessionRequest)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = application/json
+             Body = {"success":true,"message":"운동 세션 생성 완료","data":{"id":82,"routineId":null,"routineName":null,"workoutDate":"2025-12-12","durationMinutes":60,"notes":"오늘 운동 기록","createdAt":"2025-12-12T19:17:09.779283","sets":[]}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2025-12-12 19:17:09.785 [Test worker] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-12 19:17:09.785 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2025-12-12 19:17:09.787 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 2 ms
+2025-12-12 19:17:09.787 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u.id id 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id 
+        from
+            users u1_0 
+        where
+            u1_0.email=? 
+        fetch
+            first ? rows only
+2025-12-12 19:17:09.861 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.User
+        */insert 
+    into
+        users (created_at, email, name, password, id) 
+    values
+        (?, ?, ?, ?, default)
+2025-12-12 19:17:09.864 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.866 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.866 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.WorkoutSession
+        */insert 
+    into
+        workout_sessions (created_at, duration_minutes, notes, routine_id, user_id, workout_date, id) 
+    values
+        (?, ?, ?, ?, ?, ?, default)
+2025-12-12 19:17:09.868 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.870 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.870 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.WorkoutSession
+        */insert 
+    into
+        workout_sessions (created_at, duration_minutes, notes, routine_id, user_id, workout_date, id) 
+    values
+        (?, ?, ?, ?, ?, ?, default)
+2025-12-12 19:17:09.872 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.873 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.874 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.WorkoutSession
+        */insert 
+    into
+        workout_sessions (created_at, duration_minutes, notes, routine_id, user_id, workout_date, id) 
+    values
+        (?, ?, ?, ?, ?, ?, default)
+2025-12-12 19:17:09.876 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.878 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.878 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        w 
+    FROM
+        WorkoutSession w 
+    WHERE
+        w.user.id = :userId 
+        AND w.workoutDate BETWEEN :startDate AND :endDate */ select
+            ws1_0.id,
+            ws1_0.created_at,
+            ws1_0.duration_minutes,
+            ws1_0.notes,
+            ws1_0.routine_id,
+            ws1_0.user_id,
+            ws1_0.workout_date 
+        from
+            workout_sessions ws1_0 
+        where
+            ws1_0.user_id=? 
+            and ws1_0.workout_date between ? and ?
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/workouts
+       Parameters = {startDate=[2025-12-09], endDate=[2025-12-12]}
+          Headers = [Content-Type:"application/json", Authorization:"Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0XzE3NjU1MzQ2Mjk3ODdAdGVzdC5jb20iLCJpYXQiOjE3NjU1MzQ2MjksImV4cCI6MTc2NTYyMTAyOX0.oG4pwM7Of2siAK3xUsjDSeIa-JPyiGuL4P5EGlVMZDBsrd8n852Cl4-Gzyfs6GV_"]
+             Body = <no character encoding set>
+    Session Attrs = {}
+
+Handler:
+             Type = com.example.FitTracker.controller.WorkoutController
+           Method = com.example.FitTracker.controller.WorkoutController#getWorkouts(LocalDate, LocalDate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = application/json
+             Body = {"success":true,"message":"성공","data":[{"id":84,"routineId":null,"routineName":null,"workoutDate":"2025-12-09","durationMinutes":60,"notes":"테스트 세션","createdAt":"2025-12-12T19:17:09.870438","sets":[]},{"id":85,"routineId":null,"routineName":null,"workoutDate":"2025-12-11","durationMinutes":60,"notes":"테스트 세션","createdAt":"2025-12-12T19:17:09.874772","sets":[]}]}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2025-12-12 19:17:09.884 [Test worker] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-12 19:17:09.885 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2025-12-12 19:17:09.886 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms
+2025-12-12 19:17:09.887 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u.id id 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id 
+        from
+            users u1_0 
+        where
+            u1_0.email=? 
+        fetch
+            first ? rows only
+2025-12-12 19:17:09.962 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.User
+        */insert 
+    into
+        users (created_at, email, name, password, id) 
+    values
+        (?, ?, ?, ?, default)
+2025-12-12 19:17:09.965 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.967 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.967 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.WorkoutSession
+        */insert 
+    into
+        workout_sessions (created_at, duration_minutes, notes, routine_id, user_id, workout_date, id) 
+    values
+        (?, ?, ?, ?, ?, ?, default)
+2025-12-12 19:17:09.970 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.971 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.971 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        w 
+    FROM
+        WorkoutSession w 
+    WHERE
+        w.id = :id 
+        AND w.user.id = :userId */ select
+            ws1_0.id,
+            ws1_0.created_at,
+            ws1_0.duration_minutes,
+            ws1_0.notes,
+            ws1_0.routine_id,
+            ws1_0.user_id,
+            ws1_0.workout_date 
+        from
+            workout_sessions ws1_0 
+        where
+            ws1_0.id=? 
+            and ws1_0.user_id=?
+2025-12-12 19:17:09.972 [Test worker] DEBUG org.hibernate.SQL - 
+    select
+        et1_0.id,
+        et1_0.body_part,
+        et1_0.description,
+        et1_0.name 
+    from
+        exercise_types et1_0 
+    where
+        et1_0.id=?
+2025-12-12 19:17:09.973 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.WorkoutSet
+        */insert 
+    into
+        workout_sets (completed, exercise_type_id, reps, set_number, weight, workout_session_id, id) 
+    values
+        (?, ?, ?, ?, ?, ?, default)
+2025-12-12 19:17:09.974 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.975 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.976 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        w 
+    FROM
+        WorkoutSession w 
+    WHERE
+        w.id = :id 
+        AND w.user.id = :userId */ select
+            ws1_0.id,
+            ws1_0.created_at,
+            ws1_0.duration_minutes,
+            ws1_0.notes,
+            ws1_0.routine_id,
+            ws1_0.user_id,
+            ws1_0.workout_date 
+        from
+            workout_sessions ws1_0 
+        where
+            ws1_0.id=? 
+            and ws1_0.user_id=?
+2025-12-12 19:17:09.977 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.WorkoutSet
+        */insert 
+    into
+        workout_sets (completed, exercise_type_id, reps, set_number, weight, workout_session_id, id) 
+    values
+        (?, ?, ?, ?, ?, ?, default)
+2025-12-12 19:17:09.978 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.979 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.980 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        w 
+    FROM
+        WorkoutSession w 
+    WHERE
+        w.id = :id 
+        AND w.user.id = :userId */ select
+            ws1_0.id,
+            ws1_0.created_at,
+            ws1_0.duration_minutes,
+            ws1_0.notes,
+            ws1_0.routine_id,
+            ws1_0.user_id,
+            ws1_0.workout_date 
+        from
+            workout_sessions ws1_0 
+        where
+            ws1_0.id=? 
+            and ws1_0.user_id=?
+2025-12-12 19:17:09.982 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.WorkoutSet
+        */insert 
+    into
+        workout_sets (completed, exercise_type_id, reps, set_number, weight, workout_session_id, id) 
+    values
+        (?, ?, ?, ?, ?, ?, default)
+2025-12-12 19:17:09.982 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.984 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:09.985 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        ws 
+    FROM
+        WorkoutSession ws 
+    LEFT JOIN
+        
+    FETCH
+        ws.workoutSets wset 
+    LEFT JOIN
+        
+    FETCH
+        wset.exerciseType 
+    WHERE
+        ws.id = :sessionId 
+        AND ws.user.id = :userId */ select
+            ws1_0.id,
+            ws1_0.created_at,
+            ws1_0.duration_minutes,
+            ws1_0.notes,
+            ws1_0.routine_id,
+            ws1_0.user_id,
+            ws1_0.workout_date,
+            ws2_0.workout_session_id,
+            ws2_0.id,
+            ws2_0.completed,
+            ws2_0.exercise_type_id,
+            et1_0.id,
+            et1_0.body_part,
+            et1_0.description,
+            et1_0.name,
+            ws2_0.reps,
+            ws2_0.set_number,
+            ws2_0.weight 
+        from
+            workout_sessions ws1_0 
+        left join
+            workout_sets ws2_0 
+                on ws1_0.id=ws2_0.workout_session_id 
+        left join
+            exercise_types et1_0 
+                on et1_0.id=ws2_0.exercise_type_id 
+        where
+            ws1_0.id=? 
+            and ws1_0.user_id=?
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/workouts/86
+       Parameters = {}
+          Headers = [Content-Type:"application/json", Authorization:"Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0XzE3NjU1MzQ2Mjk4ODZAdGVzdC5jb20iLCJpYXQiOjE3NjU1MzQ2MjksImV4cCI6MTc2NTYyMTAyOX0.rcRwgZEOGx7Eeg_fHEkHD7k3GI67zY7zFcX7404EoCS-oMPZDLROioEMCo8whvaQ"]
+             Body = <no character encoding set>
+    Session Attrs = {}
+
+Handler:
+             Type = com.example.FitTracker.controller.WorkoutController
+           Method = com.example.FitTracker.controller.WorkoutController#getWorkoutSession(Long)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = application/json
+             Body = {"success":true,"message":"성공","data":{"id":86,"routineId":null,"routineName":null,"workoutDate":"2025-12-12","durationMinutes":60,"notes":"테스트 세션","createdAt":"2025-12-12T19:17:09.967083","sets":[{"id":257,"exerciseTypeId":1,"exerciseName":"벤치 프레스","bodyPart":"가슴","setNumber":1,"reps":10,"weight":80.0,"completed":true},{"id":258,"exerciseTypeId":1,"exerciseName":"벤치 프레스","bodyPart":"가슴","setNumber":2,"reps":10,"weight":80.0,"completed":true},{"id":259,"exerciseTypeId":1,"exerciseName":"벤치 프레스","bodyPart":"가슴","setNumber":3,"reps":10,"weight":80.0,"completed":true}]}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2025-12-12 19:17:09.991 [Test worker] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-12 19:17:09.991 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2025-12-12 19:17:09.992 [Test worker] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms
+2025-12-12 19:17:09.993 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u.id id 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id 
+        from
+            users u1_0 
+        where
+            u1_0.email=? 
+        fetch
+            first ? rows only
+2025-12-12 19:17:10.065 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.User
+        */insert 
+    into
+        users (created_at, email, name, password, id) 
+    values
+        (?, ?, ?, ?, default)
+2025-12-12 19:17:10.068 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:10.070 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:10.070 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.WorkoutSession
+        */insert 
+    into
+        workout_sessions (created_at, duration_minutes, notes, routine_id, user_id, workout_date, id) 
+    values
+        (?, ?, ?, ?, ?, ?, default)
+2025-12-12 19:17:10.072 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:10.074 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:10.074 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        w 
+    FROM
+        WorkoutSession w 
+    WHERE
+        w.id = :id 
+        AND w.user.id = :userId */ select
+            ws1_0.id,
+            ws1_0.created_at,
+            ws1_0.duration_minutes,
+            ws1_0.notes,
+            ws1_0.routine_id,
+            ws1_0.user_id,
+            ws1_0.workout_date 
+        from
+            workout_sessions ws1_0 
+        where
+            ws1_0.id=? 
+            and ws1_0.user_id=?
+2025-12-12 19:17:10.075 [Test worker] DEBUG org.hibernate.SQL - 
+    select
+        et1_0.id,
+        et1_0.body_part,
+        et1_0.description,
+        et1_0.name 
+    from
+        exercise_types et1_0 
+    where
+        et1_0.id=?
+2025-12-12 19:17:10.076 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.WorkoutSet
+        */insert 
+    into
+        workout_sets (completed, exercise_type_id, reps, set_number, weight, workout_session_id, id) 
+    values
+        (?, ?, ?, ?, ?, ?, default)
+2025-12-12 19:17:10.077 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:10.078 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.name,
+            u1_0.password 
+        from
+            users u1_0 
+        where
+            u1_0.email=?
+2025-12-12 19:17:10.079 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        ws 
+    FROM
+        WorkoutSession ws 
+    LEFT JOIN
+        
+    FETCH
+        ws.workoutSets wset 
+    LEFT JOIN
+        
+    FETCH
+        wset.exerciseType 
+    WHERE
+        ws.id = :sessionId 
+        AND ws.user.id = :userId */ select
+            ws1_0.id,
+            ws1_0.created_at,
+            ws1_0.duration_minutes,
+            ws1_0.notes,
+            ws1_0.routine_id,
+            ws1_0.user_id,
+            ws1_0.workout_date,
+            ws2_0.workout_session_id,
+            ws2_0.id,
+            ws2_0.completed,
+            ws2_0.exercise_type_id,
+            et1_0.id,
+            et1_0.body_part,
+            et1_0.description,
+            et1_0.name,
+            ws2_0.reps,
+            ws2_0.set_number,
+            ws2_0.weight 
+        from
+            workout_sessions ws1_0 
+        left join
+            workout_sets ws2_0 
+                on ws1_0.id=ws2_0.workout_session_id 
+        left join
+            exercise_types et1_0 
+                on et1_0.id=ws2_0.exercise_type_id 
+        where
+            ws1_0.id=? 
+            and ws1_0.user_id=?
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/workouts/87
+       Parameters = {}
+          Headers = [Content-Type:"application/json", Authorization:"Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0XzE3NjU1MzQ2Mjk5OTJAdGVzdC5jb20iLCJpYXQiOjE3NjU1MzQ2MzAsImV4cCI6MTc2NTYyMTAzMH0.JmvnEWCG-I29j_wwCr6kfxHrnBwXwcTJ7ncRLansCFjuZ9aTOFucDPm_cyYycrjA"]
+             Body = <no character encoding set>
+    Session Attrs = {}
+
+Handler:
+             Type = com.example.FitTracker.controller.WorkoutController
+           Method = com.example.FitTracker.controller.WorkoutController#getWorkoutSession(Long)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = application/json
+             Body = {"success":true,"message":"성공","data":{"id":87,"routineId":null,"routineName":null,"workoutDate":"2025-12-12","durationMinutes":60,"notes":"테스트 세션","createdAt":"2025-12-12T19:17:10.070445","sets":[{"id":260,"exerciseTypeId":1,"exerciseName":"벤치 프레스","bodyPart":"가슴","setNumber":1,"reps":10,"weight":80.0,"completed":true}]}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

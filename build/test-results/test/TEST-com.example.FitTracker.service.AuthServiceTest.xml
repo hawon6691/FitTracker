@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="AuthService 단위 테스트" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-12-12T10:17:10.089Z" hostname="SEOHAWON" time="0.944">
+  <properties/>
+  <testcase name="로그인 실패 - 잘못된 비밀번호" classname="com.example.FitTracker.service.AuthServiceTest" time="0.898"/>
+  <testcase name="JWT 토큰 생성 검증" classname="com.example.FitTracker.service.AuthServiceTest" time="0.021"/>
+  <testcase name="로그인 후 SecurityContext 설정 검증" classname="com.example.FitTracker.service.AuthServiceTest" time="0.007"/>
+  <testcase name="로그인 성공" classname="com.example.FitTracker.service.AuthServiceTest" time="0.007"/>
+  <testcase name="로그인 실패 - 존재하지 않는 사용자" classname="com.example.FitTracker.service.AuthServiceTest" time="0.006"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

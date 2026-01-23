@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.FitTracker.config.ExerciseDataLoaderTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2025-12-12T10:16:59.319Z" hostname="SEOHAWON" time="0.148">
+  <properties/>
+  <testcase name="신체부위별_운동종목_확인()" classname="com.example.FitTracker.config.ExerciseDataLoaderTest" time="0.073"/>
+  <testcase name="각_신체부위별_운동종목_상세_출력()" classname="com.example.FitTracker.config.ExerciseDataLoaderTest" time="0.053"/>
+  <testcase name="운동종목_데이터_초기화_확인()" classname="com.example.FitTracker.config.ExerciseDataLoaderTest" time="0.02"/>
+  <system-out><![CDATA[2025-12-12 19:16:59.293 [Test worker] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.FitTracker.config.ExerciseDataLoaderTest]: ExerciseDataLoaderTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-12-12 19:16:59.313 [Test worker] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.FitTracker.FitTrackerApplication for test class com.example.FitTracker.config.ExerciseDataLoaderTest
+2025-12-12 19:16:59.334 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        e 
+    FROM
+        ExerciseType e 
+    WHERE
+        e.bodyPart = :bodyPart */ select
+            et1_0.id,
+            et1_0.body_part,
+            et1_0.description,
+            et1_0.name 
+        from
+            exercise_types et1_0 
+        where
+            et1_0.body_part=?
+가슴 운동: 6개
+2025-12-12 19:16:59.358 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        e 
+    FROM
+        ExerciseType e 
+    WHERE
+        e.bodyPart = :bodyPart */ select
+            et1_0.id,
+            et1_0.body_part,
+            et1_0.description,
+            et1_0.name 
+        from
+            exercise_types et1_0 
+        where
+            et1_0.body_part=?
+등 운동: 7개
+2025-12-12 19:16:59.364 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        e 
+    FROM
+        ExerciseType e 
+    WHERE
+        e.bodyPart = :bodyPart */ select
+            et1_0.id,
+            et1_0.body_part,
+            et1_0.description,
+            et1_0.name 
+        from
+            exercise_types et1_0 
+        where
+            et1_0.body_part=?
+다리 운동: 7개
+2025-12-12 19:16:59.370 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        e 
+    FROM
+        ExerciseType e 
+    WHERE
+        e.bodyPart = :bodyPart */ select
+            et1_0.id,
+            et1_0.body_part,
+            et1_0.description,
+            et1_0.name 
+        from
+            exercise_types et1_0 
+        where
+            et1_0.body_part=?
+어깨 운동: 7개
+2025-12-12 19:16:59.376 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        e 
+    FROM
+        ExerciseType e 
+    WHERE
+        e.bodyPart = :bodyPart */ select
+            et1_0.id,
+            et1_0.body_part,
+            et1_0.description,
+            et1_0.name 
+        from
+            exercise_types et1_0 
+        where
+            et1_0.body_part=?
+팔 운동: 9개
+2025-12-12 19:16:59.382 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        e 
+    FROM
+        ExerciseType e 
+    WHERE
+        e.bodyPart = :bodyPart */ select
+            et1_0.id,
+            et1_0.body_part,
+            et1_0.description,
+            et1_0.name 
+        from
+            exercise_types et1_0 
+        where
+            et1_0.body_part=?
+복근 운동: 8개
+2025-12-12 19:16:59.399 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        e 
+    FROM
+        ExerciseType e 
+    WHERE
+        e.bodyPart = :bodyPart */ select
+            et1_0.id,
+            et1_0.body_part,
+            et1_0.description,
+            et1_0.name 
+        from
+            exercise_types et1_0 
+        where
+            et1_0.body_part=?
+
+========== 가슴 운동 (6개) ==========
+- 벤치 프레스: 바벨을 사용하여 가슴 전체를 발달시키는 대표적인 운동입니다.
+- 인클라인 벤치 프레스: 상부 가슴 발달에 효과적인 벤치 프레스 변형 운동입니다.
+- 덤벨 프레스: 덤벨을 사용하여 가슴 근육의 가동 범위를 넓히는 운동입니다.
+- 덤벨 플라이: 가슴 근육의 스트레칭과 수축을 강조하는 고립 운동입니다.
+- 체스트 프레스 머신: 머신을 이용한 안정적인 가슴 운동입니다.
+- 딥스: 자신의 체중을 이용하여 가슴 하부와 삼두근을 발달시키는 운동입니다.
+2025-12-12 19:16:59.406 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        e 
+    FROM
+        ExerciseType e 
+    WHERE
+        e.bodyPart = :bodyPart */ select
+            et1_0.id,
+            et1_0.body_part,
+            et1_0.description,
+            et1_0.name 
+        from
+            exercise_types et1_0 
+        where
+            et1_0.body_part=?
+
+========== 등 운동 (7개) ==========
+- 데드리프트: 등 전체와 하체, 코어를 동시에 발달시키는 복합 운동입니다.
+- 풀업: 자신의 체중을 이용하여 광배근을 발달시키는 운동입니다.
+- 랫 풀다운: 광배근의 넓이를 발달시키는 대표적인 등 운동입니다.
+- 바벨 로우: 등 중앙부와 두께를 발달시키는 복합 운동입니다.
+- 덤벨 로우: 한쪽씩 집중하여 등 근육을 발달시키는 운동입니다.
+- 시티드 로우: 케이블 머신을 이용하여 등 중앙부를 발달시키는 운동입니다.
+- 티바 로우: 상부 등과 승모근을 발달시키는 운동입니다.
+2025-12-12 19:16:59.412 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        e 
+    FROM
+        ExerciseType e 
+    WHERE
+        e.bodyPart = :bodyPart */ select
+            et1_0.id,
+            et1_0.body_part,
+            et1_0.description,
+            et1_0.name 
+        from
+            exercise_types et1_0 
+        where
+            et1_0.body_part=?
+
+========== 다리 운동 (7개) ==========
+- 스쿼트: 하체 전체를 발달시키는 가장 기본적이고 효과적인 운동입니다.
+- 레그 프레스: 머신을 이용하여 하체 근육을 안전하게 발달시키는 운동입니다.
+- 레그 익스텐션: 대퇴사두근을 집중적으로 발달시키는 고립 운동입니다.
+- 레그 컬: 햄스트링을 집중적으로 발달시키는 고립 운동입니다.
+- 런지: 하체 전체와 균형감각을 발달시키는 운동입니다.
+- 불가리안 스플릿 스쿼트: 한쪽 다리씩 집중하여 하체를 발달시키는 운동입니다.
+- 카프 레이즈: 종아리 근육을 집중적으로 발달시키는 운동입니다.
+2025-12-12 19:16:59.420 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        e 
+    FROM
+        ExerciseType e 
+    WHERE
+        e.bodyPart = :bodyPart */ select
+            et1_0.id,
+            et1_0.body_part,
+            et1_0.description,
+            et1_0.name 
+        from
+            exercise_types et1_0 
+        where
+            et1_0.body_part=?
+
+========== 어깨 운동 (7개) ==========
+- 숄더 프레스: 어깨 전체를 발달시키는 대표적인 운동입니다.
+- 덤벨 숄더 프레스: 덤벨을 이용하여 어깨 근육의 가동 범위를 넓히는 운동입니다.
+- 사이드 레터럴 레이즈: 측면 삼각근을 집중적으로 발달시키는 고립 운동입니다.
+- 프론트 레이즈: 전면 삼각근을 집중적으로 발달시키는 고립 운동입니다.
+- 리어 델트 플라이: 후면 삼각근을 집중적으로 발달시키는 고립 운동입니다.
+- 페이스 풀: 후면 삼각근과 회전근개를 강화하는 운동입니다.
+- 업라이트 로우: 측면 삼각근과 승모근을 발달시키는 운동입니다.
+2025-12-12 19:16:59.426 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        e 
+    FROM
+        ExerciseType e 
+    WHERE
+        e.bodyPart = :bodyPart */ select
+            et1_0.id,
+            et1_0.body_part,
+            et1_0.description,
+            et1_0.name 
+        from
+            exercise_types et1_0 
+        where
+            et1_0.body_part=?
+
+========== 팔 운동 (9개) ==========
+- 바벨 컬: 이두근을 발달시키는 가장 기본적인 운동입니다.
+- 덤벨 컬: 덤벨을 이용하여 이두근을 발달시키는 운동입니다.
+- 해머 컬: 이두근과 상완근을 동시에 발달시키는 운동입니다.
+- 프리처 컬: 이두근의 하부를 집중적으로 발달시키는 운동입니다.
+- 케이블 컬: 케이블을 이용하여 이두근에 지속적인 긴장을 주는 운동입니다.
+- 트라이셉스 푸시다운: 케이블을 이용하여 삼두근을 발달시키는 운동입니다.
+- 오버헤드 트라이셉스 익스텐션: 삼두근의 장두를 집중적으로 발달시키는 운동입니다.
+- 스컬 크러셔: 바벨이나 덤벨을 이용하여 삼두근을 발달시키는 운동입니다.
+- 클로즈 그립 벤치 프레스: 삼두근을 집중적으로 발달시키는 복합 운동입니다.
+2025-12-12 19:16:59.432 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        e 
+    FROM
+        ExerciseType e 
+    WHERE
+        e.bodyPart = :bodyPart */ select
+            et1_0.id,
+            et1_0.body_part,
+            et1_0.description,
+            et1_0.name 
+        from
+            exercise_types et1_0 
+        where
+            et1_0.body_part=?
+
+========== 복근 운동 (8개) ==========
+- 크런치: 복직근 상부를 발달시키는 기본적인 운동입니다.
+- 레그 레이즈: 복직근 하부를 집중적으로 발달시키는 운동입니다.
+- 플랭크: 코어 전체를 안정화하고 강화하는 정적 운동입니다.
+- 러시안 트위스트: 복사근을 발달시키고 회전력을 강화하는 운동입니다.
+- 행잉 레그 레이즈: 복직근 전체를 강하게 자극하는 고급 운동입니다.
+- 사이드 플랭크: 복사근과 코어 측면을 강화하는 운동입니다.
+- 마운틴 클라이머: 복근과 심폐 지구력을 동시에 발달시키는 운동입니다.
+- 바이시클 크런치: 복직근과 복사근을 동시에 자극하는 운동입니다.
+2025-12-12 19:16:59.455 [Test worker] DEBUG org.hibernate.SQL - 
+    /* select
+        count(*) 
+    from
+        ExerciseType x */ select
+            count(*) 
+        from
+            exercise_types et1_0
+총 44개의 운동 종목이 초기화되었습니다.
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

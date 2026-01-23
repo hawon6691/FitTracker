@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.FitTracker.UserServiceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-12-12T10:16:58.300Z" hostname="SEOHAWON" time="0.982">
+  <properties/>
+  <testcase name="회원가입_이메일중복_실패()" classname="com.example.FitTracker.UserServiceTest" time="0.883"/>
+  <testcase name="회원가입_성공()" classname="com.example.FitTracker.UserServiceTest" time="0.098"/>
+  <system-out><![CDATA[19:16:48.665 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.FitTracker.UserServiceTest]: UserServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+19:16:48.826 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.FitTracker.FitTrackerApplication for test class com.example.FitTracker.UserServiceTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.0)
+
+2025-12-12 19:16:49.811 [Test worker] INFO  c.example.FitTracker.UserServiceTest - Starting UserServiceTest using Java 21.0.8 with PID 36016 (started by hawon in C:\00_work\01_work\02_java\04_FitTracker\FitTracker)
+2025-12-12 19:16:49.815 [Test worker] DEBUG c.example.FitTracker.UserServiceTest - Running with Spring Boot v4.0.0, Spring v7.0.1
+2025-12-12 19:16:49.816 [Test worker] INFO  c.example.FitTracker.UserServiceTest - No active profile set, falling back to 1 default profile: "default"
+2025-12-12 19:16:51.220 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-12 19:16:51.384 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 145 ms. Found 8 JPA repository interfaces.
+2025-12-12 19:16:52.148 [Test worker] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-12 19:16:52.252 [Test worker] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 7.1.8.Final
+2025-12-12 19:16:52.947 [Test worker] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-12 19:16:52.994 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-12-12 19:16:53.195 [Test worker] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@12aa2cca
+2025-12-12 19:16:53.197 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-12-12 19:16:53.261 [Test worker] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-12-12 19:16:53.285 [Test worker] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/fittrackerdb?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: fittrackerdb/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DatasourceConnectionProviderImpl
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-12-12 19:16:54.632 [Test worker] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-12 19:16:54.799 [Test worker] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-12 19:16:54.924 [Test worker] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-12-12 19:16:55.323 [Test worker] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2025-12-12 19:16:56.873 [Test worker] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-12 19:16:58.141 [Test worker] INFO  c.example.FitTracker.UserServiceTest - Started UserServiceTest in 9.066 seconds (process running for 11.431)
+2025-12-12 19:16:58.250 [Test worker] DEBUG org.hibernate.SQL - 
+    /* select
+        count(*) 
+    from
+        ExerciseType x */ select
+            count(*) 
+        from
+            exercise_types et1_0
+2025-12-12 19:16:58.277 [Test worker] INFO  c.e.F.config.ExerciseDataLoader - 운동 종목 데이터가 이미 존재합니다. 초기화를 건너뜁니다.
+2025-12-12 19:16:58.809 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u.id id 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id 
+        from
+            users u1_0 
+        where
+            u1_0.email=? 
+        limit
+            ?
+2025-12-12 19:16:58.932 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.User
+        */insert 
+    into
+        users (created_at, email, name, password) 
+    values
+        (?, ?, ?, ?)
+2025-12-12 19:16:59.143 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u.id id 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id 
+        from
+            users u1_0 
+        where
+            u1_0.email=? 
+        limit
+            ?
+2025-12-12 19:16:59.190 [Test worker] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u.id id 
+    FROM
+        User u 
+    WHERE
+        u.email = :email */ select
+            u1_0.id 
+        from
+            users u1_0 
+        where
+            u1_0.email=? 
+        limit
+            ?
+2025-12-12 19:16:59.267 [Test worker] DEBUG org.hibernate.SQL - 
+    /* insert 
+    for
+        com.example.FitTracker.domain.User
+        */insert 
+    into
+        users (created_at, email, name, password) 
+    values
+        (?, ?, ?, ?)
+]]></system-out>
+  <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (C:\Users\hawon\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.17.8\f09415827a71be7ed621c7bd02550678f28bc81c\byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>

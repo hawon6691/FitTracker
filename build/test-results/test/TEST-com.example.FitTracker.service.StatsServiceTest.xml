@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="StatsService 단위 테스트" tests="3" skipped="0" failures="0" errors="0" timestamp="2025-12-12T10:17:11.373Z" hostname="SEOHAWON" time="0.263">
+  <properties/>
+  <testcase name="1RM 계산 검증 - 1회" classname="com.example.FitTracker.service.StatsServiceTest" time="0.256"/>
+  <testcase name="주간 통계 계산" classname="com.example.FitTracker.service.StatsServiceTest" time="0.005"/>
+  <testcase name="1RM 계산 검증 - 10회" classname="com.example.FitTracker.service.StatsServiceTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

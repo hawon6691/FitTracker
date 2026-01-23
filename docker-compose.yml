@@ -1,0 +1,26 @@
+version: "2"
+
+services:
+  fitTrackerSQL:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "root1234"
+      MYSQL_DATABASE: "fittrackerdb"
+      MYSQL_USER: "hawon"
+      MYSQL_PASSWORD: "1234"
+      TZ: Asia/Seoul
+      MYSQL_ALLOW_EMPTY_PASSWORD: "NO"
+      MYSQL_SSL: "OFF"
+      MYSQL_SSL_MODE: "DISABLED"
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./database/init/:/docker-entrypoint-initdb.d/  # 초기화 스크립트는 그대로
+      - mysql_data:/var/lib/mysql # 데이터 디렉토리는 새로 정의된 볼륨으로
+    platform: linux/x86_64
+    ports:
+      - 3306:3306
+volumes:
+  mysql_data:  # 새로 정의된 {NAME} 볼륨
